@@ -98,7 +98,15 @@ function openFile()
 	var x = document.createElement("INPUT");
     x.setAttribute("type", "file");
     document.body.appendChild(x);
-	}
+}
+
+/* when user clicks save menu item*/
+function saveFile() {
+  var text = $("#textarea").val();
+  var filename = $("NewFile").val()
+  var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
+  saveAs(blob, filename+".txt");
+}
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
