@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <title>Copy and Paste</title>
+</head>
+
+<script type="text/javascript">
+  function copy(){
+    var text=document.getElementById("text");
+    var range=document.createRange();
+
+    range.selectNode(text);
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+  }
+
+  function paste(){
+    alert("Paste command executed");
+    var text=window.clipboardData.getData('Text');
+  }
+</script>
+
+<body>
+  <center>
+    <textarea id="text" cols="80" rows="20">This is a text area</textarea>
+    <button onclick="copy()">Copy</button>
+    <button onclick="paste()">Paste</button>
+  </center>
+</body>
+
+</html>
