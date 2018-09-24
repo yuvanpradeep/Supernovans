@@ -77,7 +77,7 @@ new{
     <button onclick="myFile()" class="dropbtn">File</button>
     <div id="myFileList" class="dropdown-content">
         <a href="#New">New</a>
-        <a href="#Open">Open</a>
+        <a onclick="openFile()" href="#Open">Open</a>
         <a href="#Save">Save</a>
     </div>
 
@@ -92,6 +92,12 @@ function myFile()
 {
     document.getElementById("myFileList").classList.toggle("show");
     }
+function openFile()
+{
+	var x = document.createElement("INPUT");
+    x.setAttribute("type", "file");
+    document.body.appendChild(x);
+	}
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
