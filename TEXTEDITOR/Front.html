@@ -65,11 +65,13 @@ new{
     cursor: pointer;
 }
 
-
-
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+/*For undo redo*/
+.UndoRedo{
+    display: inline-block;
+}
 </style>
 </head>
 <body>
@@ -82,7 +84,11 @@ new{
     </div>
 
 </div>
-
+<div class="UndoRedo">
+<button onclick="undoAction()" id="undoBtn">Undo</button>
+<button onclick="redoAction()" id="undoBtn">Redo</button>
+</div>
+<!--<textarea rows="30" cols="100" id="textarea1" onkeyup="stateChange()"></textarea> -->
 
 <script>
 /* When the user clicks on the button,
@@ -114,6 +120,43 @@ window.onclick = function(event) {
     }
   }
 }
+/*Code for Undo/Redo operations*/
+var past =[];
+var future =[];
+
+/* Function to perform the undo operation*/
+function undoAction() { 
+    var preappend = "";
+    var acutualelemnt ="";
+    if(past.length > 0)
+    {
+        preappend = past.pop();
+        future.push(preappend);
+        acutualelemnt = past.pop();
+        document.getElementById("textarea1").innerHTML = "";
+        document.getElementById("textarea1").innerHTML = acutualelemnt;
+    }
+} 
+/* Function to check the changes within the text area*/
+function stateChange()
+{
+    var currHtml = "";
+    currHtml = document.getElementById("textarea1").innerHTML;
+    past.push(currHtml);
+}
+/* Function to perform the redo operation*/
+function redoAction() { 
+    var acutualdata = "";
+    if(future.length > 0)
+    {
+    acutualdata = future.pop();
+    past.push(acutualdata);
+    document.getElementById("textarea1").innerHTML = "";
+    document.getElementById("textarea1").innerHTML = acutualdata;
+    }
+}
+/*Code for Undo/Redo operations*/
+
 </script>
 
 </body>
