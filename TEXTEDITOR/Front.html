@@ -88,7 +88,7 @@ new{
 <button onclick="undoAction()" id="undoBtn">Undo</button>
 <button onclick="redoAction()" id="undoBtn">Redo</button>
 </div>
-<!--<textarea rows="30" cols="100" id="textarea1" onkeyup="stateChange()"></textarea> -->
+<textarea rows="30" cols="100" id="textarea1" onkeyup="stateChange()"></textarea>
 
 <script>
 /* When the user clicks on the button,
@@ -123,7 +123,12 @@ window.onclick = function(event) {
 /*Code for Undo/Redo operations*/
 var past =[];
 var future =[];
-
+/* Disable buttons on load */
+function buttondisable()
+{
+document.getElementById("undoBtn").disabled = true;
+document.getElementById("redoBtn").disabled = true;
+}
 /* Function to perform the undo operation*/
 function undoAction() { 
     var preappend = "";
@@ -136,6 +141,11 @@ function undoAction() {
         document.getElementById("textarea1").innerHTML = "";
         document.getElementById("textarea1").innerHTML = acutualelemnt;
     }
+    else if(past.length ==0)
+    {
+        document.getElementById("textarea1").innerHTML = "";
+        document.getElementById("undoBtn").disabled = true;
+    }
 } 
 /* Function to check the changes within the text area*/
 function stateChange()
@@ -143,6 +153,10 @@ function stateChange()
     var currHtml = "";
     currHtml = document.getElementById("textarea1").innerHTML;
     past.push(currHtml);
+    if(past.length >0)
+    {
+        document.getElementById("undoBtn").disabled = false;
+    }
 }
 /* Function to perform the redo operation*/
 function redoAction() { 
@@ -153,6 +167,9 @@ function redoAction() {
     past.push(acutualdata);
     document.getElementById("textarea1").innerHTML = "";
     document.getElementById("textarea1").innerHTML = acutualdata;
+    }
+    else{
+        document.getElementById("redoBtn").disabled = true;
     }
 }
 /*Code for Undo/Redo operations*/
