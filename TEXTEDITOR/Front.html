@@ -76,11 +76,18 @@ new{
 <div class="dropdown">
     <button onclick="myFile()" class="dropbtn">File</button>
     <div id="myFileList" class="dropdown-content">
-        <a href="#New">New</a>
-        <a href="#Open">Open</a>
-        <a href="#Save">Save</a>
+        <a onclick="newFunc()" href="#New">New</a>
+        <a onclick="openFunc()" href="#Open">Open</a>
+        <a onclick="saveFunc()" href="#Save">Save</a>
     </div>
-
+	<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Edit</button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="#Cut">Cut</a>
+        <a href="#Copy">Copy</a>
+        <a href="#Paste">Paste</a>
+    </div>
+</div>
 </div>
 
 
@@ -91,7 +98,13 @@ toggle between hiding and showing the dropdown content */
 function myFile()
 {
     document.getElementById("myFileList").classList.toggle("show");
-    }
+}
+	
+function myFunction() 
+{
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+	
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
