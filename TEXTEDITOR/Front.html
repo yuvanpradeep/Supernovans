@@ -121,8 +121,8 @@ window.onclick = function(event) {
   }
 }
 /*Code for Undo/Redo operations*/
-var past =[];
-var future =[];
+var pastUndo =[];
+var futureRedo =[];
 /* Disable buttons on load */
 function buttondisable()
 {
@@ -131,19 +131,21 @@ document.getElementById("redoBtn").disabled = true;
 }
 /* Function to perform the undo operation*/
 function undoAction() { 
-    var preappend = "";
     var acutualelemnt ="";
-    if(past.length > 0)
+    if(pastUndo.length > 0)
     {
-        preappend = past.pop();
-        future.push(preappend);
-        acutualelemnt = past.pop();
-        document.getElementById("textarea1").innerHTML = "";
-        document.getElementById("textarea1").innerHTML = acutualelemnt;
+        acutualelemnt = pastUndo.pop(); //Taking out the last added item from past array
+        futureRedo.push(acutualelemnt); //Added to the future array for redo operation
+        document.getElementById("redoBtn").disabled = false;
+        document.getElementById("textarea1").value = "";
+        if(acutualelemnt != undefined)
+        {
+            document.getElementById("textarea1").value = acutualelemnt;
+        }
     }
-    else if(past.length ==0)
+    else if(pastUndo.length ==0)
     {
-        document.getElementById("textarea1").innerHTML = "";
+        document.getElementById("textarea1").value = "";
         document.getElementById("undoBtn").disabled = true;
     }
 } 
@@ -151,9 +153,9 @@ function undoAction() {
 function stateChange()
 {
     var currHtml = "";
-    currHtml = document.getElementById("textarea1").innerHTML;
-    past.push(currHtml);
-    if(past.length >0)
+    currHtml = document.getElementById("textarea1").value;
+    pastUndo.push(currHtml); //Each change will be added to the past array
+    if(pastUndo.length >0)
     {
         document.getElementById("undoBtn").disabled = false;
     }
@@ -161,12 +163,13 @@ function stateChange()
 /* Function to perform the redo operation*/
 function redoAction() { 
     var acutualdata = "";
-    if(future.length > 0)
+    if(futureRedo.length > 0)
     {
-    acutualdata = future.pop();
-    past.push(acutualdata);
-    document.getElementById("textarea1").innerHTML = "";
-    document.getElementById("textarea1").innerHTML = acutualdata;
+    acutualdata = futureRedo.pop(); 
+    pastUndo.push(acutualdata);
+    document.getElementById("undoBtn").disabled = false;
+    document.getElementById("textarea1").value = "";
+    document.getElementById("textarea1").value = acutualdata;
     }
     else{
         document.getElementById("redoBtn").disabled = true;
