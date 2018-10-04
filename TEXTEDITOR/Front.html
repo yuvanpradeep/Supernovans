@@ -92,13 +92,26 @@ function myFile()
 {
     document.getElementById("myFileList").classList.toggle("show");
     }
-/* When the user clicks on file open it prompts browse button to load the file*/
+/* When the user clicks on file open it prompts browse button to load the file
 function openFile()
 {
 	var x = document.createElement("INPUT");
     x.setAttribute("type", "file");
     document.body.appendChild(x);
-	}
+	
+	}*/
+  function readFile(file) {
+      var reader = new FileReader();
+      reader.onload = readSuccess;
+      function readSuccess(evt) {
+          document.getElementById("myTextarea").value = evt.target.result;          
+      };
+      reader.readAsText(file);
+  }
+
+  document.getElementById('selectedFile').onchange = function(e) {
+      readFile(e.srcElement.files[0]);
+  }
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
