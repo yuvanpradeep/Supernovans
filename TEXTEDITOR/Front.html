@@ -8,15 +8,17 @@
     <script  type = "text/javascript" src = "js/texteditor.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-<body class="fullScreen">
+<body class="fullScreen" onload="buttondisable()">
     <div class="container-fluid d-flex h-100 flex-column">
         <div class="row controlPanel">
                 <button class="col-md-1 btnStyle btn btn-default" onclick="newFile()">New</button>
                 <button class="col-md-1 btnStyle btn btn-default" onclick="openFile()">Open</button>
                 <button class="col-md-1 btnStyle btn btn-default" onclick="saveFile()">Save</button>
+                <button class="col-md-1 btnStyle btn btn-default" id="undoBtn" onclick="undoAction()">Undo</button>
+                <button class="col-md-1 btnStyle btn btn-default" id="redoBtn" onclick="redoAction()">Redo</button>
         </div>
         <div class="row textAreaPanel flex-grow-1">
-            <textarea id="textarea" class="form-control" placeholder="Enter you text here..." ></textarea>
+            <textarea id="textarea" onkeyup="stateChange()" class="form-control" placeholder="Enter you text here..." ></textarea>
         </div>
     </div>
     <div id="saveTaskModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -28,102 +30,5 @@
             </div>
         </div>
     </div>
-
-</div>
-<div class="UndoRedo">
-<button onclick="undoAction()" id="undoBtn">Undo</button>
-<button onclick="redoAction()" id="undoBtn">Redo</button>
-</div>
-<textarea rows="30" cols="100" id="textarea1" onkeyup="stateChange()"></textarea>
-
-<script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-
-function myFile()
-{
-    document.getElementById("myFileList").classList.toggle("show");
-    }
-/* When the user clicks on file open it prompts browse button to load the file*/
-function openFile()
-{
-	var x = document.createElement("INPUT");
-    x.setAttribute("type", "file");
-    document.body.appendChild(x);
-	}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-/*Code for Undo/Redo operations*/
-var pastUndo =[];
-var futureRedo =[];
-/* Disable buttons on load */
-function buttondisable()
-{
-document.getElementById("undoBtn").disabled = true;
-document.getElementById("redoBtn").disabled = true;
-}
-/* Function to perform the undo operation*/
-function undoAction() { 
-    var acutualelemnt ="";
-    if(pastUndo.length > 0)
-    {
-        acutualelemnt = pastUndo.pop(); //Taking out the last added item from past array
-        futureRedo.push(acutualelemnt); //Added to the future array for redo operation
-        document.getElementById("redoBtn").disabled = false;
-        document.getElementById("textarea1").value = "";
-        if(acutualelemnt != undefined)
-        {
-            document.getElementById("textarea1").value = acutualelemnt;
-        }
-    }
-    else if(pastUndo.length ==0)
-    {
-        document.getElementById("textarea1").value = "";
-        document.getElementById("undoBtn").disabled = true;
-    }
-} 
-/* Function to check the changes within the text area*/
-function stateChange()
-{
-    var currHtml = "";
-    currHtml = document.getElementById("textarea1").value;
-    pastUndo.push(currHtml); //Each change will be added to the past array
-    if(pastUndo.length >0)
-    {
-        document.getElementById("undoBtn").disabled = false;
-    }
-}
-/* Function to perform the redo operation*/
-function redoAction() { 
-    var acutualdata = "";
-    if(futureRedo.length > 0)
-    {
-    acutualdata = futureRedo.pop(); 
-    pastUndo.push(acutualdata);
-    document.getElementById("undoBtn").disabled = false;
-    document.getElementById("textarea1").value = "";
-    document.getElementById("textarea1").value = acutualdata;
-    }
-    else{
-        document.getElementById("redoBtn").disabled = true;
-    }
-}
-/*Code for Undo/Redo operations*/
-
-</script>
-
 </body>
 </html>
