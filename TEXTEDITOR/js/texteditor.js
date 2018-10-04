@@ -2,6 +2,15 @@
 function newFile()
 {
 
+   var txt;
+	var text = $("#textarea").val();
+    if (text.length > 0)
+	{
+		 if (confirm("Do you want to save?")) {
+			saveFile();
+			document.getElementById("textarea").value="";
+		} 
+	}
 }
 
 function openFile()
