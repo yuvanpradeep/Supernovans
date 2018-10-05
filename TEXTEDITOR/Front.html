@@ -31,4 +31,10 @@
     </div>
 
 </body>
+<script>
+  document.getElementById('selectedFile').onchange = function(e) {
+      readFile(e.srcElement.files[0]);
+  }
+ </script>
+
 </html>

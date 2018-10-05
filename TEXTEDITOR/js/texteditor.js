@@ -16,7 +16,6 @@ function readFile(file) {
       var reader = new FileReader();
       reader.onload = readSuccess;
       function readSuccess(evt) {
-	  console.log(evt.target.result);
           document.getElementById("textarea").value = evt.target.result;          
       };
       reader.readAsText(file);
@@ -24,9 +23,7 @@ function readFile(file) {
 
 function openFile()
 {
-	$('#selectedFile').trigger('click', function(e) {
-      readFile(e.srcElement.files[0]);
-  }); 
+  $('#selectedFile').trigger('click');
 }
 
 function saveFile()
