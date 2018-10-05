@@ -53,6 +53,59 @@ function downloadFile(filedata, filename, filetype) {
         }, 0); 
     }
 }
-
-
-	
+/*Code for Undo/Redo operations*/
+var pastUndo =[];
+var futureRedo =[];
+/* Disable buttons on load */
+function buttondisable()
+{
+document.getElementById("undoBtn").disabled = true;
+document.getElementById("redoBtn").disabled = true;
+}
+/* Function to perform the undo operation*/
+function undoAction() { 
+    var acutualelemnt ="";
+    if(pastUndo.length > 0)
+    {
+        acutualelemnt = pastUndo.pop(); //Taking out the last added item from past array
+        futureRedo.push(acutualelemnt); //Added to the future array for redo operation
+        document.getElementById("redoBtn").disabled = false;
+        document.getElementById("textarea").value = "";
+        if(acutualelemnt != undefined)
+        {
+            document.getElementById("textarea").value = acutualelemnt;
+        }
+    }
+    else if(pastUndo.length ==0)
+    {
+        document.getElementById("textarea").value = "";
+        document.getElementById("undoBtn").disabled = true;
+    }
+} 
+/* Function to check the changes within the text area*/
+function stateChange()
+{
+    var currHtml = "";
+    currHtml = document.getElementById("textarea").value;
+    pastUndo.push(currHtml); //Each change will be added to the past array
+    if(pastUndo.length >0)
+    {
+        document.getElementById("undoBtn").disabled = false;
+    }
+}
+/* Function to perform the redo operation*/
+function redoAction() { 
+    var acutualdata = "";
+    if(futureRedo.length > 0)
+    {
+    acutualdata = futureRedo.pop(); 
+    pastUndo.push(acutualdata);
+    document.getElementById("undoBtn").disabled = false;
+    document.getElementById("textarea").value = "";
+    document.getElementById("textarea").value = acutualdata;
+    }
+    else{
+        document.getElementById("redoBtn").disabled = true;
+    }
+}
+/*Code for Undo/Redo operations*/	

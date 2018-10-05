@@ -8,16 +8,18 @@
     <script  type = "text/javascript" src = "js/texteditor.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-<body class="fullScreen">
+<body class="fullScreen" onload="buttondisable()">
     <div class="container-fluid d-flex h-100 flex-column">
         <div class="row controlPanel">
                 <button class="col-md-1 btnStyle btn btn-default" onclick="newFile()">New</button>
                 <button class="col-md-1 btnStyle btn btn-default" onclick="openFile()">Open</button>
                 <button class="col-md-1 btnStyle btn btn-default" onclick="saveFile()">Save</button>
+                <button class="col-md-1 btnStyle btn btn-default" id="undoBtn" onclick="undoAction()">Undo</button>
+                <button class="col-md-1 btnStyle btn btn-default" id="redoBtn" onclick="redoAction()">Redo</button>
         </div>
         <div class="row textAreaPanel flex-grow-1">
-			<input type="file" id="selectedFile" class="hiddenfile" />
-            <textarea id="textarea" class="form-control" placeholder="Enter you text here..." ></textarea>
+		    <input type="file" id="selectedFile" class="hiddenfile" />
+            <textarea id="textarea" onkeyup="stateChange()" class="form-control" placeholder="Enter you text here..." ></textarea>
         </div>
     </div>
     <div id="saveTaskModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -29,12 +31,10 @@
             </div>
         </div>
     </div>
-
 </body>
 <script>
   document.getElementById('selectedFile').onchange = function(e) {
       readFile(e.srcElement.files[0]);
   }
- </script>
-
+</script>
 </html>
