@@ -1,0 +1,33 @@
+
+
+.btnStyle {
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+.hiddenfile {
+ width: 0px;
+ height: 0px;
+ overflow: hidden;
+}
+
+.controlPanel {
+    background: #535353;
+    padding-bottom: 3px;
+    padding-right: 3px;   
+}
+
+.textAreaPanel {
+    background: #535353;
+    padding-bottom: 6px;
+    padding-top:0px;
+    padding-right: 3px;  
+    padding-left: 3px;   
+}
+
+.fullScreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
