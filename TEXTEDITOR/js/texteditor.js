@@ -12,10 +12,18 @@ function newFile()
 		} 
 	}
 }
+function readFile(file) {
+      var reader = new FileReader();
+      reader.onload = readSuccess;
+      function readSuccess(evt) {
+          document.getElementById("textarea").value = evt.target.result;          
+      };
+      reader.readAsText(file);
+  }
 
 function openFile()
 {
-
+  $('#selectedFile').trigger('click');
 }
 
 function saveFile()

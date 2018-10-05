@@ -5,6 +5,12 @@
     margin-left: 3px;
 }
 
+.hiddenfile {
+ width: 0px;
+ height: 0px;
+ overflow: hidden;
+}
+
 .controlPanel {
     background: #535353;
     padding-bottom: 3px;

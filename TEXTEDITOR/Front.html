@@ -18,6 +18,7 @@
                 <button class="col-md-1 btnStyle btn btn-default" id="redoBtn" onclick="redoAction()">Redo</button>
         </div>
         <div class="row textAreaPanel flex-grow-1">
+		    <input type="file" id="selectedFile" class="hiddenfile" />
             <textarea id="textarea" onkeyup="stateChange()" class="form-control" placeholder="Enter you text here..." ></textarea>
         </div>
     </div>
@@ -31,4 +32,9 @@
         </div>
     </div>
 </body>
+<script>
+  document.getElementById('selectedFile').onchange = function(e) {
+      readFile(e.srcElement.files[0]);
+  }
+</script>
 </html>
