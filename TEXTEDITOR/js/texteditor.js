@@ -127,6 +127,14 @@ function stateChange()
     {
         document.getElementById("undoBtn").disabled = false;
     }
+    Charactercount();
+}
+/* Function to perform the character count operation*/
+function Charactercount()
+{
+    var countValue= 0;
+    countValue = document.getElementById("textarea").value.length;
+    document.getElementById("charcount").innerHTML = countValue;
 }
 /* Function to perform the redo operation*/
 function redoAction() {
