@@ -127,8 +127,9 @@ function stateChange()
     {
         document.getElementById("undoBtn").disabled = false;
     }
-    Charactercount();
+    Charactercount();  // function call for character count
 }
+
 /* Function to perform the character count operation*/
 function Charactercount()
 {
@@ -136,6 +137,13 @@ function Charactercount()
     countValue = document.getElementById("textarea").value.length;
     document.getElementById("charcount").innerHTML = countValue;
 }
+
+/* Function to perform the word count operation*/
+function Wordcount()
+{
+
+}
+
 /* Function to perform the redo operation*/
 function redoAction() {
     var acutualdata = "";
