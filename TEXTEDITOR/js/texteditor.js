@@ -10,6 +10,10 @@ function newFile()
 			saveFile();
 			document.getElementById("textarea").value="";
 		}
+		else
+		{
+			document.getElementById("textarea").value="";
+		}
 	}
 }
 function readFile(file) {
