@@ -148,3 +148,9 @@ function redoAction() {
     }
 }
 /*Code for Undo/Redo operations*/
+
+
+function searchButtonClicked() {
+    var searchStr = $("#searchTxtBox").val();
+    console.log(searchStr);
+}
