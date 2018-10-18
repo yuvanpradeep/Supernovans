@@ -33,7 +33,12 @@
 .Count
 {
     color: white;
-    margin-left:300px;
+    margin-left:240px;
+}
+.WCount
+{
+    color: white;
+    margin-left:90px;
 }
 #charcount
 {

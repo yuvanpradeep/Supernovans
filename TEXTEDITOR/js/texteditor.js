@@ -128,6 +128,7 @@ function stateChange()
         document.getElementById("undoBtn").disabled = false;
     }
     Charactercount();  // function call for character count
+    Wordcount(); //function call for word count
 }
 
 /* Function to perform the character count operation*/
@@ -141,7 +142,13 @@ function Charactercount()
 /* Function to perform the word count operation*/
 function Wordcount()
 {
-
+    var wordcountvalue = 0;
+    s = document.getElementById("textarea").value;
+	s = s.replace(/(^\s*)|(\s*$)/gi,"");
+	s = s.replace(/[ ]{2,}/gi," ");
+    s = s.replace(/\n /,"\n");
+    wordcountvalue = s.split(' ').length;
+	document.getElementById("wordcount").innerHTML = wordcountvalue;
 }
 
 /* Function to perform the redo operation*/
