@@ -21,6 +21,7 @@
                     <button class="col-md-1 btnStyle btn btn-default" onclick="copy()">Copy</button>
                     <button class="col-md-1 btnStyle btn btn-default" id="undoBtn" onclick="undoAction()">Undo</button>
                     <button class="col-md-1 btnStyle btn btn-default" id="redoBtn" onclick="redoAction()">Redo</button>
+                    <button class="col-md-1 btnStyle btn btn-default" id="findReplace" onclick="findAndReplace()" style="padding:3px">Find&Replace</button>
                 </div>
                 <!-- Search Box -->
                 <div id ="searchBtnGrp" class="row  input-group btnStyle col-md-2 ml-auto">
@@ -30,7 +31,7 @@
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
-                </div>                    
+                </div>
         </div>
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />
