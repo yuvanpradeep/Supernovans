@@ -91,6 +91,20 @@ function cut(){
       copysuccess = false;
   }
 }
+function superScript(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "superscript", true, "" );; // run command to cut selected text to clipboard
+  } catch(e){
+      copysuccess = false;
+  }
+}
 /* Code for cut and copy operation-end*/
 /*Code for Undo/Redo operations*/
 var pastUndo =[];
