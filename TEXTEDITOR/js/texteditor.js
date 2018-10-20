@@ -154,3 +154,21 @@ function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
     console.log(searchStr);
 }
+
+/* Code for Subscript*/
+
+function subScript(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "subscript", true, "" );; // run command to cut selected text to clipboard
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
