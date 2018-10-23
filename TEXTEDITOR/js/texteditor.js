@@ -10,6 +10,10 @@ function newFile()
 			saveFile();
 			document.getElementById("textarea").value="";
 		}
+		else
+		{
+			document.getElementById("textarea").value="";
+		}
 	}
 }
 function readFile(file) {
@@ -144,3 +148,9 @@ function redoAction() {
     }
 }
 /*Code for Undo/Redo operations*/
+
+
+function searchButtonClicked() {
+    var searchStr = $("#searchTxtBox").val();
+    console.log(searchStr);
+}
