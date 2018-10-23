@@ -149,11 +149,27 @@ function redoAction() {
 }
 /*Code for Undo/Redo operations*/
 
-
 function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
     console.log(searchStr);
 }
+
+/*Function to search and highlightText -start*/
+function highlightText(){
+  var searchText=document.getElementById("findText").value;
+  if(searchText===null || searchText===undefined || searchText.length===0){
+    alert("Enter some text to into the find text box to perform Find and Replace");
+  }else{
+    var text=document.getElementById("textarea").innerHTML;
+    var index=text.indexOf(searchText);
+    if(index>=0){
+      text=text.substring(0,index) + "<span class='highlight'>" + text.substring(index,index+searchText.length) + "</span>" + text.substring(index + searchText.length);
+      document.getElementById("textarea").innerHTML = text;
+    }
+  }
+}
+/*Function to search and highlightText - end*/
+
 
 /*Function to hide the "placeholder" text when div contains user-supplied text */
 (function ($) {
