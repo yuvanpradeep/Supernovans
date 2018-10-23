@@ -30,11 +30,11 @@
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
-                </div>                    
+                </div>
         </div>
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />
-            <textarea id="textarea" onkeyup="stateChange()" class="form-control" placeholder="Enter you text here..." ></textarea>
+            <div id="textarea" contenteditable="true" class="form-control editable" data-placeholder='Enter your text here...' ></div>
         </div>
     </div>
     <div id="saveTaskModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
