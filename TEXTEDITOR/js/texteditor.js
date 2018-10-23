@@ -154,3 +154,15 @@ function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
     console.log(searchStr);
 }
+
+/*Function to hide the "placeholder" text when div contains user-supplied text */
+(function ($) {
+	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
+		if (this.textContent) {
+			this.dataset.divPlaceholderContent = 'true';
+		}
+		else {
+			delete(this.dataset.divPlaceholderContent);
+		}
+	});
+})(jQuery);
