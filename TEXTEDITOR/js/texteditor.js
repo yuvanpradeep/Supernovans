@@ -1,7 +1,10 @@
-
+$(document).ready(function(){
+    $('#textarea').keyup(function(){
+        stateChange();
+    });
+})
 function newFile()
 {
-
    var txt;
 	var text = $("#textarea").val();
     if (text.length > 0)
@@ -105,15 +108,15 @@ function undoAction() {
         acutualelemnt = pastUndo.pop(); //Taking out the last added item from past array
         futureRedo.push(acutualelemnt); //Added to the future array for redo operation
         document.getElementById("redoBtn").disabled = false;
-        document.getElementById("textarea").value = "";
+        document.getElementById("textarea").innerHTML = "";
         if(acutualelemnt != undefined)
         {
-            document.getElementById("textarea").value = acutualelemnt;
+            document.getElementById("textarea").innerHTML = acutualelemnt;
         }
     }
     else if(pastUndo.length ==0)
     {
-        document.getElementById("textarea").value = "";
+        document.getElementById("textarea").innerHTML = "";
         document.getElementById("undoBtn").disabled = true;
     }
 }
@@ -121,7 +124,8 @@ function undoAction() {
 function stateChange()
 {
     var currHtml = "";
-    currHtml = document.getElementById("textarea").value;
+    debugger;
+    currHtml = document.getElementById("textarea").innerHTML;
     pastUndo.push(currHtml); //Each change will be added to the past array
     if(pastUndo.length >0)
     {
@@ -135,15 +139,16 @@ function stateChange()
 function Charactercount()
 {
     var countValue= 0;
-    countValue = document.getElementById("textarea").value.length;
-    document.getElementById("charcount").innerHTML = countValue;
+    countValue = document.getElementById("textarea").innerText.length;
+    document.getElementById("charcount").innerText = countValue;
 }
 
 /* Function to perform the word count operation*/
 function Wordcount()
 {
+    debugger;
     var wordcountvalue = 0;
-    s = document.getElementById("textarea").value;
+    s = document.getElementById("textarea").innerText;
 	s = s.replace(/(^\s*)|(\s*$)/gi,"");
 	s = s.replace(/[ ]{2,}/gi," ");
     s = s.replace(/\n /,"\n");
@@ -159,8 +164,8 @@ function redoAction() {
     acutualdata = futureRedo.pop();
     pastUndo.push(acutualdata);
     document.getElementById("undoBtn").disabled = false;
-    document.getElementById("textarea").value = "";
-    document.getElementById("textarea").value = acutualdata;
+    document.getElementById("textarea").innerHTML = "";
+    document.getElementById("textarea").innerHTML = acutualdata;
     }
     else{
         document.getElementById("redoBtn").disabled = true;
