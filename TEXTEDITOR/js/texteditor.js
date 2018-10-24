@@ -89,6 +89,8 @@ function cut(){
   } catch(e){
       copysuccess = false;
   }
+  Charactercount();  // function call for character count
+    Wordcount(); //function call for word count
 }
 /* Code for cut and copy operation-end*/
 /*Code for Undo/Redo operations*/
@@ -119,6 +121,8 @@ function undoAction() {
         document.getElementById("textarea").innerHTML = "";
         document.getElementById("undoBtn").disabled = true;
     }
+    Charactercount();  // function call for character count
+    Wordcount(); //function call for word count
 }
 /* Function to check the changes within the text area*/
 function stateChange()
@@ -170,5 +174,7 @@ function redoAction() {
     else{
         document.getElementById("redoBtn").disabled = true;
     }
+    Charactercount();  // function call for character count
+    Wordcount(); //function call for word count
 }
 /*Code for Undo/Redo operations*/
