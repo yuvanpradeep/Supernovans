@@ -11,16 +11,16 @@ function newFile()
 {
 
    var txt;
-	var text = $("#textarea").val();
+	var text = $("#textarea").html();
     if (text.length > 0)
 	{
 		 if (confirm("Do you want to save?")) {
 			saveFile();
-			document.getElementById("textarea").value="";
+			document.getElementById("textarea").innerHTML="";
 		}
 		else
 		{
-			document.getElementById("textarea").value="";
+			document.getElementById("textarea").innerHTML="";
 		}
 	}
 }
@@ -40,7 +40,7 @@ function openFile()
 
 function saveFile()
 {
-    var text = $("#textarea").val();
+    var text = $("#textarea").html();
     if (text.length > 0)
     {
         downloadFile(text, "NewTextDocument.txt", "text/plain;charset=utf-8");
