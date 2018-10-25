@@ -100,7 +100,7 @@ function superScript(){
   // var to check whether execCommand successfully executed
   var copysuccess;
   try{
-      copysuccess = document.execCommand( "superscript", true, "" );; // run command to cut selected text to clipboard
+      copysuccess = document.execCommand( "superscript"); // executable command to make the selected text as super script.
   } catch(e){
       copysuccess = false;
   }
