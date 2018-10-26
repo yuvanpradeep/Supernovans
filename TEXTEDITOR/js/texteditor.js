@@ -209,6 +209,15 @@ function centerAlign(){
   }
 }
 
+function Justify(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyFull"); // DOM executable command to align the text to the CENTER.
+  } catch(e){
+      copysuccess = false;
+  }
+}
 
 /*Function to hide the "placeholder" text when div contains user-supplied text */
 (function ($) {
