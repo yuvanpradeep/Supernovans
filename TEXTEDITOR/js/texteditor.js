@@ -179,6 +179,37 @@ function superScript(){
   }
 }
 
+function leftAlign(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyLeft"); // DOM executable command to align the text to the LEFT.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function rightAlign(){
+   // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyRight"); // DOM executable command to align the text to the RIGHT.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function centerAlign(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyCenter"); // DOM executable command to align the text to the CENTER.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+
 /*Function to hide the "placeholder" text when div contains user-supplied text */
 (function ($) {
 	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
