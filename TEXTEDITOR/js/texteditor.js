@@ -1,18 +1,26 @@
 
+$(document).ready(function(){
+
+    $( "#textarea" ).keyup(function() {
+        stateChange();
+      });
+
+})
+
 function newFile()
 {
 
    var txt;
-	var text = $("#textarea").val();
+	var text = $("#textarea").html();
     if (text.length > 0)
 	{
 		 if (confirm("Do you want to save?")) {
 			saveFile();
-			document.getElementById("textarea").value="";
+			document.getElementById("textarea").innerHTML="";
 		}
 		else
 		{
-			document.getElementById("textarea").value="";
+			document.getElementById("textarea").innerHTML="";
 		}
 	}
 }
@@ -32,7 +40,7 @@ function openFile()
 
 function saveFile()
 {
-    var text = $("#textarea").val();
+    var text = $("#textarea").html();
     if (text.length > 0)
     {
         downloadFile(text, "NewTextDocument.txt", "text/plain;charset=utf-8");
@@ -123,15 +131,16 @@ function undoAction() {
         acutualelemnt = pastUndo.pop(); //Taking out the last added item from past array
         futureRedo.push(acutualelemnt); //Added to the future array for redo operation
         document.getElementById("redoBtn").disabled = false;
-        document.getElementById("textarea").value = "";
+        
+        document.getElementById("textarea").innerHTML = "";
         if(acutualelemnt != undefined)
         {
-            document.getElementById("textarea").value = acutualelemnt;
+            document.getElementById("textarea").innerHTML = acutualelemnt;
         }
     }
     else if(pastUndo.length ==0)
     {
-        document.getElementById("textarea").value = "";
+        document.getElementById("textarea").innerHTML = "";
         document.getElementById("undoBtn").disabled = true;
     }
 }
@@ -139,7 +148,7 @@ function undoAction() {
 function stateChange()
 {
     var currHtml = "";
-    currHtml = document.getElementById("textarea").value;
+    currHtml = document.getElementById("textarea").innerHTML;
     pastUndo.push(currHtml); //Each change will be added to the past array
     if(pastUndo.length >0)
     {
@@ -154,8 +163,8 @@ function redoAction() {
     acutualdata = futureRedo.pop();
     pastUndo.push(acutualdata);
     document.getElementById("undoBtn").disabled = false;
-    document.getElementById("textarea").value = "";
-    document.getElementById("textarea").value = acutualdata;
+    document.getElementById("textarea").innerHTML = "";
+    document.getElementById("textarea").innerHTML = acutualdata;
     }
     else{
         document.getElementById("redoBtn").disabled = true;
@@ -168,3 +177,15 @@ function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
     console.log(searchStr);
 }
+
+/*Function to hide the "placeholder" text when div contains user-supplied text */
+(function ($) {
+	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
+		if (this.textContent) {
+			this.dataset.divPlaceholderContent = 'true';
+		}
+		else {
+			delete(this.dataset.divPlaceholderContent);
+		}
+	});
+})(jQuery);
