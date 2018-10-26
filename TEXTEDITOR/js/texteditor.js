@@ -99,20 +99,6 @@ function cut(){
       copysuccess = false;
   }
 }
-function superScript(){
-  var selectedText = "";
-  if (window.getSelection){
-      selectedText = window.getSelection().toString();
-  }
-  strVariable=selectedText;
-  // var to check whether execCommand successfully executed
-  var copysuccess;
-  try{
-      copysuccess = document.execCommand( "superscript"); // executable command to make the selected text as super script.
-  } catch(e){
-      copysuccess = false;
-  }
-}
 /* Code for cut and copy operation-end*/
 /*Code for Undo/Redo operations*/
 var pastUndo =[];
@@ -176,6 +162,21 @@ function redoAction() {
 function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
     console.log(searchStr);
+}
+
+function superScript(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "superscript"); // executable command to make the selected text as super script.
+  } catch(e){
+      copysuccess = false;
+  }
 }
 
 /*Function to hide the "placeholder" text when div contains user-supplied text */
