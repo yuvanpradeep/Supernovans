@@ -415,6 +415,14 @@ function replaceHelper(){
   replaceAll(searchText,replaceText);
 }
 
+function replaceAll(searchText,replaceText){
+  var regExp=new RegExp(searchText,"g");
+  $("#textarea").html(function() {
+      return $(this).html().replace(regExp, replaceText);
+  });
+  removehighlightAll(searchText);
+}
+
 /*Function to hide the "placeholder" text when div contains user-supplied text */
 (function ($) {
 	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
