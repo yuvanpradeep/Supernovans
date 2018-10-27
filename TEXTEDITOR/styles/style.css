@@ -14,15 +14,15 @@
 .controlPanel {
     background: #535353;
     padding-bottom: 3px;
-    padding-right: 3px;   
+    padding-right: 3px;
 }
 
 .textAreaPanel {
     background: #535353;
     padding-bottom: 6px;
     padding-top:0px;
-    padding-right: 3px;  
-    padding-left: 3px;   
+    padding-right: 3px;
+    padding-left: 3px;
 }
 
 .fullScreen {
@@ -43,6 +43,17 @@
     display: inline-block;
 }
 
+#textarea{
+  height: 100vh !important;
+}
+
+/* CSS class for adding placeholder in a div area*/
+div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
+    content: attr(data-placeholder);
+    float: left;
+    margin-left: 2px;
+    color: #b3b3b3;
+}
 .highlight {
     background-color: orange;
   }

@@ -4,20 +4,28 @@ $(document).ready(function(){
     });
 })
 
+$(document).ready(function(){
+
+    $( "#textarea" ).keyup(function() {
+        stateChange();
+      });
+
+})
+
 var isSearchTrigger = false
 function newFile()
 {
    var txt;
-	var text = $("#textarea").val();
+	var text = $("#textarea").html();
     if (text.length > 0)
 	{
 		 if (confirm("Do you want to save?")) {
 			saveFile();
-			document.getElementById("textarea").value="";
+			document.getElementById("textarea").innerHTML="";
 		}
 		else
 		{
-			document.getElementById("textarea").value="";
+			document.getElementById("textarea").innerHTML="";
 		}
 	}
 }
@@ -116,6 +124,7 @@ function undoAction() {
         acutualelemnt = pastUndo.pop(); //Taking out the last added item from past array
         futureRedo.push(acutualelemnt); //Added to the future array for redo operation
         document.getElementById("redoBtn").disabled = false;
+        
         document.getElementById("textarea").innerHTML = "";
         if(acutualelemnt != undefined)
         {
@@ -187,6 +196,97 @@ function redoAction() {
 function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
 }
+
+/* Code for Subscript*/
+
+function subScript(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "subscript"); // executable command to make the selected text as sub script.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+/* Code for Uppercase */
+function upperCase(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	  console.log("entered");
+	 currHtml = document.getElementById("textarea").innerHTML;
+	 console.log(currHtml);
+     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
+	 console.log(copysuccess);
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+	console.log(res);
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+
+/* Code for Lowercase */
+
+function lowerCase(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	  console.log("entered");
+	 currHtml = document.getElementById("textarea").innerHTML;
+	 console.log(currHtml);
+     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as lowercase.
+	 console.log(copysuccess);
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+	console.log(res);
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+
+/* Code for bullet points*/
+
+function bulletPoints(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "insertUnorderedList"); // executable command to make the selected text as bullet.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+
+
+
 /*Function to hide the "placeholder" text when div contains user-supplied text */
 (function ($) {
 	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
