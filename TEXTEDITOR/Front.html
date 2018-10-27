@@ -14,20 +14,25 @@
     <div class="container-fluid d-flex h-200 flex-column">
         <div class="row controlPanel">
                 <div class="row col-md-10">
-                    <button class="col-md-0.8 btnStyle btn btn-default" onclick="newFile()"><img src="..\TEXTEDITOR\IMAGES\new.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="col-md-0.8 btnStyle btn btn-default" onclick="openFile()"><img src="..\TEXTEDITOR\IMAGES\open.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="newFile()"><img src="..\TEXTEDITOR\IMAGES\new.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="openFile()"><img src="..\TEXTEDITOR\IMAGES\open.PNG" width = "40px" height = "30px"></img></button>
                     <button class="auto btnStyle btn btn-default" onclick="saveFile()"><img src="..\TEXTEDITOR\IMAGES\save.PNG" width = "40px" height = "30px"></img></button>
                     <button class="auto btnStyle btn btn-default" onclick="cut()"><img src="..\TEXTEDITOR\IMAGES\cut.PNG" width = "40px" height = "30px"></img></button>
                     <button class="auto btnStyle btn btn-default" onclick="copy()"><img src="..\TEXTEDITOR\IMAGES\copy.PNG" width = "40px" height = "30px"></img></button>
                     <button class="auto btnStyle btn btn-default" id="undoBtn" onclick="undoAction()"><img src="..\TEXTEDITOR\IMAGES\undo.PNG" width = "40px" height = "30px"></img></button>
                     <button class="auto btnStyle btn btn-default" id="redoBtn" onclick="redoAction()"><img src="..\TEXTEDITOR\IMAGES\redo.PNG" width = "40px" height = "30px"></img></button>
 					<button class="auto btnStyle btn btn-default" onclick="superScript()">A<sup>a</sup></button>
-					<button class="auto btnStyle btn btn-default" onclick="leftAlign()"><img src="..\TEXTEDITOR\IMAGES\align_left.PNG" width = "40px" height = "30px"></img></button>
+					<button class="auto btnStyle btn btn-default" onclick="subScript()">A<sub>a</sub></button>
+                    <button class="auto btnStyle btn btn-default" onclick="leftAlign()"><img src="..\TEXTEDITOR\IMAGES\align_left.PNG" width = "40px" height = "30px"></img></button>
 					<button class="auto btnStyle btn btn-default" onclick="centerAlign()"><img src="..\TEXTEDITOR\IMAGES\align_center.PNG" width = "40px" height = "30px"></img></button>
 					<button class="auto btnStyle btn btn-default" onclick="rightAlign()"><img src="..\TEXTEDITOR\IMAGES\align_right.PNG" width = "40px" height = "30px"></img></button>
 					<button class="auto btnStyle btn btn-default" onclick="Justify()"><img src="..\TEXTEDITOR\IMAGES\Justify.PNG" width = "40px" height = "30px"></img></button>
 					<button class="auto btnStyle btn btn-default" onclick="Indent()"><img src="..\TEXTEDITOR\IMAGES\indent.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" onclick="Outdent()"><img src="..\TEXTEDITOR\IMAGES\outdent.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="Outdent()"><img src="..\TEXTEDITOR\IMAGES\outdent.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="upperCase()">Uppercase</button>
+					<button class="auto btnStyle btn btn-default" onclick="lowerCase()">Lowercase</button>
+					<button class="auto btnStyle btn btn-default" onclick="bulletPoints()">Bullets</button>
+					<button class="auto btnStyle btn btn-default">highlight</button>
 				</div>
                 <!-- Search Box -->
                 <div id ="searchBtnGrp" class="row  input-group btnStyle col-md-2 ml-auto hstyle">
@@ -41,7 +46,11 @@
         </div>
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />
-            <div id="textarea" contenteditable="true" class="form-control editable" data-placeholder='Enter your text here...' ></div>
+            <div id="textarea" contenteditable="true" class="form-control" placeholder="Enter you text here..." ></textarea>
+        </div>
+        <div class="row">
+            <div class="Count"><label>Characters: <p id="charcount"></p></label></div>
+            <div class="WCount"><label>Words: <p id="wordcount"></p></label></div>
         </div>
     </div>
     <div id="saveTaskModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
