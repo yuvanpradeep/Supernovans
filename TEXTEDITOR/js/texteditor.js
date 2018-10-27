@@ -11,7 +11,7 @@ var btn = document.getElementById("previewBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal
 btn.onclick = function() {
     values = document.getElementById("textarea").innerHTML;
     chk = document.getElementById("textarea").innerText;
@@ -155,7 +155,7 @@ function undoAction() {
         acutualelemnt = pastUndo.pop(); //Taking out the last added item from past array
         futureRedo.push(acutualelemnt); //Added to the future array for redo operation
         document.getElementById("redoBtn").disabled = false;
-        
+
         document.getElementById("textarea").innerHTML = "";
         if(acutualelemnt != undefined)
         {
@@ -408,6 +408,12 @@ function removehighlightAll(searchText){
   });
 }
 
+/*Function to perform replace of all the text*/
+function replaceHelper(){
+  var searchText=$("#findText").val();
+  var replaceText=$("#replaceText").val();
+  replaceAll(searchText,replaceText);
+}
 
 /*Function to hide the "placeholder" text when div contains user-supplied text */
 (function ($) {
@@ -450,7 +456,5 @@ $(document).ready(function() {
             return;
         }
     });
-    
+
 });
-
-
