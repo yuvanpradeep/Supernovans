@@ -3,6 +3,8 @@ $(document).ready(function(){
         stateChange();
     });
 })
+
+var isSearchTrigger = false
 function newFile()
 {
    var txt;
@@ -35,7 +37,7 @@ function openFile()
 
 function saveFile()
 {
-    var text = $("#textarea").val();
+    var text = $("#textarea").html();
     if (text.length > 0)
     {
         downloadFile(text, "NewTextDocument.txt", "text/plain;charset=utf-8");
@@ -185,3 +187,34 @@ function redoAction() {
 function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
 }
+/*Function to hide the "placeholder" text when div contains user-supplied text */
+(function ($) {
+	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
+		if (this.textContent) {
+			this.dataset.divPlaceholderContent = 'true';
+		}
+		else {
+			delete(this.dataset.divPlaceholderContent);
+		}
+	});
+})(jQuery);
+
+function searchButtonClicked() {
+    var searchQuery = $("#searchTxtBox").val();
+    isSearchTrigger = false;
+    if (searchQuery.length > 0) {
+        isSearchTrigger = true;
+        highlight(searchQuery);
+    }
+}
+
+function highlight(text) {
+    $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
+}
+
+function remove_highlight() {
+    $("#textarea").html($("#textarea").html().replace(new RegExp('class="highlight"', 'g'), "" ));
+}
+
+
+

@@ -43,3 +43,6 @@
     display: inline-block;
 }
 
+.highlight {
+    background-color: orange;
+  }
