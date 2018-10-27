@@ -223,7 +223,6 @@ function redoAction() {
 }
 /*Code for Undo/Redo operations*/
 
-
 function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
 }
@@ -377,6 +376,38 @@ function bulletPoints(){
       copysuccess = false;
   }
 }
+
+/*Functions for find task*/
+function highlightHelper(){
+  var searchText=$("#findText").val();
+  if(searchText==="" || searchText===undefined || searchText===null){
+    alert("Please enter some text in the find area");
+  }else{
+    if($("#textarea").html()==="" || $("#textarea").html()===undefined || $("#textarea").html()===null){
+      alert("Please enter some text in the text area");
+    }else{
+      highlightAll(searchText);
+    }
+  }
+}
+
+function highlightAll(searchText){
+  var regExp=new RegExp(searchText,"g");
+  $("#textarea").html(function() {
+      return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
+  });
+  document.getElementById("textarea").addEventListener("click", function() {
+    removehighlightAll(searchText);
+  }, {once : true});
+}
+
+function removehighlightAll(searchText){
+  var regExp=new RegExp('<span class="highlight">' + searchText + '</span>',"g");
+  $("#textarea").html(function() {
+      return $(this).html().replace(regExp, searchText);
+  });
+}
+
 
 /*Function to hide the "placeholder" text when div contains user-supplied text */
 (function ($) {
