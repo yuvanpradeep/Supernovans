@@ -207,6 +207,34 @@ function upperCase(){
 }
 
 
+/* Code for Lowercase */
+
+function lowerCase(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	  console.log("entered");
+	 currHtml = document.getElementById("textarea").innerHTML;
+	 console.log(currHtml);
+     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as lowercase.
+	 console.log(copysuccess);
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+	console.log(res);
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+
+
 
 
 
