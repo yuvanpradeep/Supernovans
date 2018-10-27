@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    $('#textarea').keyup(function(){
+        stateChange();
+    });
+})
 
 $(document).ready(function(){
 
@@ -7,9 +12,9 @@ $(document).ready(function(){
 
 })
 
+var isSearchTrigger = false
 function newFile()
 {
-
    var txt;
 	var text = $("#textarea").html();
     if (text.length > 0)
@@ -98,6 +103,8 @@ function cut(){
   } catch(e){
       copysuccess = false;
   }
+  Charactercount();  // function call for character count
+    Wordcount(); //function call for word count
 }
 /* Code for cut and copy operation-end*/
 /*Code for Undo/Redo operations*/
@@ -129,6 +136,8 @@ function undoAction() {
         document.getElementById("textarea").innerHTML = "";
         document.getElementById("undoBtn").disabled = true;
     }
+    Charactercount();  // function call for character count
+    Wordcount(); //function call for word count
 }
 /* Function to check the changes within the text area*/
 function stateChange()
@@ -140,7 +149,30 @@ function stateChange()
     {
         document.getElementById("undoBtn").disabled = false;
     }
+    Charactercount();  // function call for character count
+    Wordcount(); //function call for word count
 }
+
+/* Function to perform the character count operation*/
+function Charactercount()
+{
+    var countValue= 0;
+    countValue = document.getElementById("textarea").innerText.length;
+    document.getElementById("charcount").innerText = countValue;
+}
+
+/* Function to perform the word count operation*/
+function Wordcount()
+{
+    var wordcountvalue = 0;
+    s = document.getElementById("textarea").innerText;
+	s = s.replace(/(^\s*)|(\s*$)/gi,"");
+	s = s.replace(/[ ]{2,}/gi," ");
+    s = s.replace(/\n /,"\n");
+    wordcountvalue = s.split(' ').length;
+	document.getElementById("wordcount").innerHTML = wordcountvalue;
+}
+
 /* Function to perform the redo operation*/
 function redoAction() {
     var acutualdata = "";
@@ -155,13 +187,14 @@ function redoAction() {
     else{
         document.getElementById("redoBtn").disabled = true;
     }
+    Charactercount();  // function call for character count
+    Wordcount(); //function call for word count
 }
 /*Code for Undo/Redo operations*/
 
 
 function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
-    console.log(searchStr);
 }
 
 /* Code for Subscript*/
@@ -254,5 +287,49 @@ function bulletPoints(){
 
 
 
+/*Function to hide the "placeholder" text when div contains user-supplied text */
+(function ($) {
+	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
+		if (this.textContent) {
+			this.dataset.divPlaceholderContent = 'true';
+		}
+		else {
+			delete(this.dataset.divPlaceholderContent);
+		}
+	});
+})(jQuery);
+
+function searchButtonClicked() {
+    var searchQuery = $("#searchTxtBox").val();
+    remove_highlight();
+    isSearchTrigger = false;
+    if (searchQuery.length > 0) {
+        isSearchTrigger = true;
+        highlight(searchQuery);
+    }
+}
+
+function highlight(text) {
+    $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
+}
+
+function remove_highlight() {
+    $("#textarea").html($("#textarea").html().replace(new RegExp('class="highlight"', 'g'), "" ));
+}
+
+
+$(document).ready(function() {
+
+    $('#textarea').on( "click", function() {
+
+        if (isSearchTrigger) {
+            isSearchTrigger = false;
+            remove_highlight();
+        } else {
+            return;
+        }
+    });
+    
+});
 
 
