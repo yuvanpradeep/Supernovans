@@ -14,8 +14,12 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     values = document.getElementById("textarea").innerHTML;
-    document.getElementById("cnt").innerHTML = values;
-    modal.style.display = "block";
+    chk = document.getElementById("textarea").innerText;
+    if(chk != "" && chk != null)
+    {
+        document.getElementById("cnt").innerHTML = values;
+        modal.style.display = "block";
+    }
 }
 
 // When the user clicks on <span> (x), close the modal
