@@ -32,7 +32,8 @@
                     <button class="auto btnStyle btn btn-default" onclick="upperCase()">Uppercase</button>
 					<button class="auto btnStyle btn btn-default" onclick="lowerCase()">Lowercase</button>
 					<button class="auto btnStyle btn btn-default" onclick="bulletPoints()">Bullets</button>
-					<button class="auto btnStyle btn btn-default">highlight</button>
+                    <button class="auto btnStyle btn btn-default">highlight</button>
+                    <button class="col-md-1 btnStyle btn btn-default" id="previewBtn" onclick="documentpreview()">Preview</button>
 				</div>
                 <!-- Search Box -->
                 <div id ="searchBtnGrp" class="row  input-group btnStyle col-md-2 ml-auto hstyle">
@@ -62,6 +63,16 @@
             </div>
         </div>
     </div>
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="mmodal-content">
+      <span class="close">&times;</span>
+      <p id="cnt"></p>
+    </div>
+  
+  </div>
 </body>
 <script>
   document.getElementById('selectedFile').onchange = function(e) {
