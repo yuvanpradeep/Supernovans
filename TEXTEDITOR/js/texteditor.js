@@ -201,6 +201,7 @@ function searchButtonClicked() {
 
 function searchButtonClicked() {
     var searchQuery = $("#searchTxtBox").val();
+    remove_highlight();
     isSearchTrigger = false;
     if (searchQuery.length > 0) {
         isSearchTrigger = true;
