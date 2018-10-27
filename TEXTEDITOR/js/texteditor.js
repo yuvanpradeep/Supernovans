@@ -213,7 +213,27 @@ function Justify(){
   // var to check whether execCommand successfully executed
   var copysuccess;
   try{
-      copysuccess = document.execCommand( "justifyFull"); // DOM executable command to align the text to the CENTER.
+      copysuccess = document.execCommand( "justifyFull"); // DOM executable command to justify the full text.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function Outdent(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "outdent"); // DOM executable command to outdent the selected text.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function Indent(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "indent"); // DOM executable command to outdent the selected text.
   } catch(e){
       copysuccess = false;
   }
