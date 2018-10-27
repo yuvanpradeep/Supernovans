@@ -30,4 +30,16 @@
     width: 100%;
     height: 100%;
 }
+.Count{
+    font-weight: 600;
+}
+.WCount
+{
+    font-weight: 600;
+    margin-left:85px;
+}
+#charcount, #wordcount
+{
+    display: inline-block;
+}
 
