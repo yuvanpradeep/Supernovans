@@ -217,4 +217,18 @@ function remove_highlight() {
 }
 
 
+$(document).ready(function() {
+
+    $('#textarea').on( "click", function() {
+
+        if (isSearchTrigger) {
+            isSearchTrigger = false;
+            remove_highlight();
+        } else {
+            return;
+        }
+    });
+    
+});
+
 
