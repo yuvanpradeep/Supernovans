@@ -411,10 +411,7 @@ function removehighlightAll(searchText){
 /*Function to perform replace of all the text*/
 function replaceHelper(){
   var searchText=$("#findText").val();
-  console.log("searchText",searchText);
-
   var replaceText=$("#replaceText").val();
-  console.log("replaceText",replaceText);
   replaceAll(searchText,replaceText);
 }
 
