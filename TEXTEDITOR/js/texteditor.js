@@ -164,14 +164,24 @@ function searchButtonClicked() {
     console.log(searchStr);
 }
 
-/*Function to hide the "placeholder" text when div contains user-supplied text */
-(function ($) {
-	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
-		if (this.textContent) {
-			this.dataset.divPlaceholderContent = 'true';
-		}
-		else {
-			delete(this.dataset.divPlaceholderContent);
-		}
-	});
-})(jQuery);
+/* Code for Subscript*/
+
+function subScript(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "subscript"); // executable command to make the selected text as sub script.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+
+
+
+
