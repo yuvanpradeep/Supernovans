@@ -33,7 +33,7 @@ function readFile(file) {
       var reader = new FileReader();
       reader.onload = readSuccess;
       function readSuccess(evt) {
-          document.getElementById("textarea").value = evt.target.result;
+          document.getElementById("textarea").innerHTML = evt.target.result;
       };
       reader.readAsText(file);
   }
@@ -197,6 +197,20 @@ function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
 }
 
+function superScript(){
+    var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "superscript"); // executable command to make the selected text as super script.
+  } catch(e){
+      copysuccess = false;
+  }
+}
 /* Code for Subscript*/
 
 function subScript(){
@@ -214,6 +228,25 @@ function subScript(){
   }
 }
 
+function leftAlign(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyLeft"); // DOM executable command to align the text to the LEFT.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function rightAlign(){
+   // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyRight"); // DOM executable command to align the text to the RIGHT.
+  } catch(e){
+    copysuccess = false;
+    }
+}
 /* Code for Uppercase */
 function upperCase(){
   var selectedText = "";
@@ -225,20 +258,45 @@ function upperCase(){
   var copysuccess = [];
   var res;
   try{
-	  console.log("entered");
 	 currHtml = document.getElementById("textarea").innerHTML;
-	 console.log(currHtml);
      copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
-	 console.log(copysuccess);
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
-	console.log(res);
 }
   catch(e){
       copysuccess = false;
   }
 }
 
+function centerAlign(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyCenter"); // DOM executable command to align the text to the CENTER.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function Justify(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyFull"); // DOM executable command to justify the full text.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function Outdent(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "outdent"); // DOM executable command to outdent the selected text.
+  } catch(e){
+    copysuccess = false;
+}
+}
 
 /* Code for Lowercase */
 
@@ -252,20 +310,25 @@ function lowerCase(){
   var copysuccess = [];
   var res;
   try{
-	  console.log("entered");
 	 currHtml = document.getElementById("textarea").innerHTML;
-	 console.log(currHtml);
      copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as lowercase.
-	 console.log(copysuccess);
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
-	console.log(res);
 }
   catch(e){
       copysuccess = false;
   }
 }
 
+function Indent(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "indent"); // DOM executable command to outdent the selected text.
+    } catch(e){
+        copysuccess = false;
+    }
+  }
 
 /* Code for bullet points*/
 
@@ -283,9 +346,6 @@ function bulletPoints(){
       copysuccess = false;
   }
 }
-
-
-
 
 /*Function to hide the "placeholder" text when div contains user-supplied text */
 (function ($) {
@@ -321,7 +381,6 @@ function remove_highlight() {
 $(document).ready(function() {
 
     $('#textarea').on( "click", function() {
-
         if (isSearchTrigger) {
             isSearchTrigger = false;
             remove_highlight();

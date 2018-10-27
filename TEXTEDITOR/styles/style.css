@@ -17,6 +17,10 @@
     padding-right: 3px;
 }
 
+.hstyle {
+	height: 38px;
+}
+
 .textAreaPanel {
     background: #535353;
     padding-bottom: 6px;
