@@ -234,6 +234,24 @@ function lowerCase(){
 }
 
 
+/* Code for bullet points*/
+
+function bulletPoints(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "insertUnorderedList"); // executable command to make the selected text as bullet.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+
 
 
 
