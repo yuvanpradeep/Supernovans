@@ -21,6 +21,7 @@
                     <button class="col-md-1 btnStyle btn btn-default" onclick="copy()">Copy</button>
                     <button class="col-md-1 btnStyle btn btn-default" id="undoBtn" onclick="undoAction()">Undo</button>
                     <button class="col-md-1 btnStyle btn btn-default" id="redoBtn" onclick="redoAction()">Redo</button>
+                    <button class="col-md-1 btnStyle btn btn-default" id="previewBtn" onclick="documentpreview()">Preview</button>
                 </div>
                 <!-- Search Box -->
                 <div id ="searchBtnGrp" class="row  input-group btnStyle col-md-2 ml-auto">
@@ -50,6 +51,16 @@
             </div>
         </div>
     </div>
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="cnt">Some text in the Modal..</p>
+    </div>
+  
+  </div>
 </body>
 <script>
   document.getElementById('selectedFile').onchange = function(e) {

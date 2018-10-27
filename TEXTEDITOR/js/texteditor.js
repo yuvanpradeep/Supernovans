@@ -185,3 +185,8 @@ function redoAction() {
 function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
 }
+/* Document preview functionality */
+function documentpreview()
+{
+
+}
