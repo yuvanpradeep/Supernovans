@@ -181,6 +181,31 @@ function subScript(){
   }
 }
 
+/* Code for Uppercase */
+function upperCase(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	  console.log("entered");
+	 currHtml = document.getElementById("textarea").innerHTML;
+	 console.log(currHtml);
+     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
+	 console.log(copysuccess);
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+	console.log(res);
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
 
 
 
