@@ -132,7 +132,6 @@ function undoAction() {
 function stateChange()
 {
     var currHtml = "";
-    debugger;
     currHtml = document.getElementById("textarea").innerHTML;
     pastUndo.push(currHtml); //Each change will be added to the past array
     if(pastUndo.length >0)
@@ -154,7 +153,6 @@ function Charactercount()
 /* Function to perform the word count operation*/
 function Wordcount()
 {
-    debugger;
     var wordcountvalue = 0;
     s = document.getElementById("textarea").innerText;
 	s = s.replace(/(^\s*)|(\s*$)/gi,"");
@@ -186,5 +184,4 @@ function redoAction() {
 
 function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
-    console.log(searchStr);
 }
