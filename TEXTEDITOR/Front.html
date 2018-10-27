@@ -11,27 +11,39 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body class="fullScreen" onload="buttondisable()">
-    <div class="container-fluid d-flex h-100 flex-column">
+    <div class="container-fluid d-flex h-200 flex-column">
         <div class="row controlPanel">
                 <div class="row col-md-10">
-                    <button class="col-md-1 btnStyle btn btn-default" onclick="newFile()">New</button>
-                    <button class="col-md-1 btnStyle btn btn-default" onclick="openFile()">Open</button>
-                    <button class="col-md-1 btnStyle btn btn-default" onclick="saveFile()">Save</button>
-                    <button class="col-md-1 btnStyle btn btn-default" onclick="cut()">Cut</button>
-                    <button class="col-md-1 btnStyle btn btn-default" onclick="copy()">Copy</button>
-                    <button class="col-md-1 btnStyle btn btn-default" id="undoBtn" onclick="undoAction()">Undo</button>
-                    <button class="col-md-1 btnStyle btn btn-default" id="redoBtn" onclick="redoAction()">Redo</button>
+                    <button class="auto btnStyle btn btn-default" onclick="newFile()"><img src="..\TEXTEDITOR\IMAGES\new.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="openFile()"><img src="..\TEXTEDITOR\IMAGES\open.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="saveFile()"><img src="..\TEXTEDITOR\IMAGES\save.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="cut()"><img src="..\TEXTEDITOR\IMAGES\cut.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="copy()"><img src="..\TEXTEDITOR\IMAGES\copy.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" id="undoBtn" onclick="undoAction()"><img src="..\TEXTEDITOR\IMAGES\undo.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" id="redoBtn" onclick="redoAction()"><img src="..\TEXTEDITOR\IMAGES\redo.PNG" width = "40px" height = "30px"></img></button>
+					<button class="auto btnStyle btn btn-default" onclick="superScript()">A<sup>a</sup></button>
+					<button class="auto btnStyle btn btn-default" onclick="subScript()">A<sub>a</sub></button>
+                    <button class="auto btnStyle btn btn-default" onclick="leftAlign()"><img src="..\TEXTEDITOR\IMAGES\align_left.PNG" width = "40px" height = "30px"></img></button>
+					<button class="auto btnStyle btn btn-default" onclick="centerAlign()"><img src="..\TEXTEDITOR\IMAGES\align_center.PNG" width = "40px" height = "30px"></img></button>
+					<button class="auto btnStyle btn btn-default" onclick="rightAlign()"><img src="..\TEXTEDITOR\IMAGES\align_right.PNG" width = "40px" height = "30px"></img></button>
+					<button class="auto btnStyle btn btn-default" onclick="Justify()"><img src="..\TEXTEDITOR\IMAGES\Justify.PNG" width = "40px" height = "30px"></img></button>
+					<button class="auto btnStyle btn btn-default" onclick="Indent()"><img src="..\TEXTEDITOR\IMAGES\indent.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="Outdent()"><img src="..\TEXTEDITOR\IMAGES\outdent.PNG" width = "40px" height = "30px"></img></button>
+                    <button class="auto btnStyle btn btn-default" onclick="upperCase()">Uppercase</button>
+					<button class="auto btnStyle btn btn-default" onclick="lowerCase()">Lowercase</button>
+					<button class="auto btnStyle btn btn-default" onclick="bulletPoints()">Bullets</button>
+                    <button class="auto btnStyle btn btn-default">highlight</button>
                     <button class="col-md-1 btnStyle btn btn-default" id="previewBtn" onclick="documentpreview()">Preview</button>
-                </div>
+				</div>
                 <!-- Search Box -->
-                <div id ="searchBtnGrp" class="row  input-group btnStyle col-md-2 ml-auto">
+                <div id ="searchBtnGrp" class="row  input-group btnStyle col-md-2 ml-auto hstyle">
                     <input id="searchTxtBox" class="form-control" type="text" placeholder="Search...">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" onclick="searchButtonClicked()" >
+                    <div class="input-group-append auto">
+                        <button class="btn btn-primary auto" type="button" onclick="searchButtonClicked()" >
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
-                </div>                    
+                </div>
         </div>
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />

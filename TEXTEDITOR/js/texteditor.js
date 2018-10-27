@@ -34,19 +34,29 @@ window.onclick = function(event) {
     }
 }
 })
+
+$(document).ready(function(){
+
+    $( "#textarea" ).keyup(function() {
+        stateChange();
+      });
+
+})
+
+var isSearchTrigger = false
 function newFile()
 {
    var txt;
-	var text = $("#textarea").val();
+	var text = $("#textarea").html();
     if (text.length > 0)
 	{
 		 if (confirm("Do you want to save?")) {
 			saveFile();
-			document.getElementById("textarea").value="";
+			document.getElementById("textarea").innerHTML="";
 		}
 		else
 		{
-			document.getElementById("textarea").value="";
+			document.getElementById("textarea").innerHTML="";
 		}
 	}
 }
@@ -54,7 +64,7 @@ function readFile(file) {
       var reader = new FileReader();
       reader.onload = readSuccess;
       function readSuccess(evt) {
-          document.getElementById("textarea").value = evt.target.result;
+          document.getElementById("textarea").innerHTML = evt.target.result;
       };
       reader.readAsText(file);
   }
@@ -66,7 +76,7 @@ function openFile()
 
 function saveFile()
 {
-    var text = $("#textarea").val();
+    var text = $("#textarea").html();
     if (text.length > 0)
     {
         downloadFile(text, "NewTextDocument.txt", "text/plain;charset=utf-8");
@@ -145,6 +155,7 @@ function undoAction() {
         acutualelemnt = pastUndo.pop(); //Taking out the last added item from past array
         futureRedo.push(acutualelemnt); //Added to the future array for redo operation
         document.getElementById("redoBtn").disabled = false;
+        
         document.getElementById("textarea").innerHTML = "";
         if(acutualelemnt != undefined)
         {
@@ -217,4 +228,201 @@ function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
 }
 
+<<<<<<< HEAD
+=======
+function superScript(){
+    var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "superscript"); // executable command to make the selected text as super script.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+/* Code for Subscript*/
+
+function subScript(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "subscript"); // executable command to make the selected text as sub script.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function leftAlign(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyLeft"); // DOM executable command to align the text to the LEFT.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function rightAlign(){
+   // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyRight"); // DOM executable command to align the text to the RIGHT.
+  } catch(e){
+    copysuccess = false;
+    }
+}
+/* Code for Uppercase */
+function upperCase(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+function centerAlign(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyCenter"); // DOM executable command to align the text to the CENTER.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function Justify(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "justifyFull"); // DOM executable command to justify the full text.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+function Outdent(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "outdent"); // DOM executable command to outdent the selected text.
+  } catch(e){
+    copysuccess = false;
+}
+}
+
+/* Code for Lowercase */
+
+function lowerCase(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as lowercase.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+function Indent(){
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "indent"); // DOM executable command to outdent the selected text.
+    } catch(e){
+        copysuccess = false;
+    }
+  }
+
+/* Code for bullet points*/
+
+function bulletPoints(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess;
+  try{
+      copysuccess = document.execCommand( "insertUnorderedList"); // executable command to make the selected text as bullet.
+  } catch(e){
+      copysuccess = false;
+  }
+}
+
+/*Function to hide the "placeholder" text when div contains user-supplied text */
+(function ($) {
+	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
+		if (this.textContent) {
+			this.dataset.divPlaceholderContent = 'true';
+		}
+		else {
+			delete(this.dataset.divPlaceholderContent);
+		}
+	});
+})(jQuery);
+
+function searchButtonClicked() {
+    var searchQuery = $("#searchTxtBox").val();
+    remove_highlight();
+    isSearchTrigger = false;
+    if (searchQuery.length > 0) {
+        isSearchTrigger = true;
+        highlight(searchQuery);
+    }
+}
+
+function highlight(text) {
+    $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
+}
+
+function remove_highlight() {
+    $("#textarea").html($("#textarea").html().replace(new RegExp('class="highlight"', 'g'), "" ));
+}
+
+
+$(document).ready(function() {
+
+    $('#textarea').on( "click", function() {
+        if (isSearchTrigger) {
+            isSearchTrigger = false;
+            remove_highlight();
+        } else {
+            return;
+        }
+    });
+    
+});
+
+>>>>>>> develop
 
