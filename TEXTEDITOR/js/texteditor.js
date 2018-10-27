@@ -154,21 +154,36 @@ function searchButtonClicked() {
     console.log(searchStr);
 }
 
-/*Function to search and highlightText -start*/
-function highlightText(){
-  var searchText=document.getElementById("findText").value;
-  if(searchText===null || searchText===undefined || searchText.length===0){
-    alert("Enter some text to into the find text box to perform Find and Replace");
+/*Functions for find task*/
+function highlightHelper(){
+  var searchText=$("#findText").val();
+  if(searchText==="" || searchText===undefined || searchText===null){
+    alert("Please enter some text in the find area");
   }else{
-    var text=document.getElementById("textarea").innerHTML;
-    var index=text.indexOf(searchText);
-    if(index>=0){
-      text=text.substring(0,index) + "<span class='highlight'>" + text.substring(index,index+searchText.length) + "</span>" + text.substring(index + searchText.length);
-      document.getElementById("textarea").innerHTML = text;
+    if($("#textarea").html()==="" || $("#textarea").html()===undefined || $("#textarea").html()===null){
+      alert("Please enter some text in the text area");
+    }else{
+      highlightAll(searchText);
     }
   }
 }
-/*Function to search and highlightText - end*/
+
+function highlightAll(searchText){
+  var regExp=new RegExp(searchText,"g");
+  $("#textarea").html(function() {
+      return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
+  });
+  document.getElementById("textarea").addEventListener("click", function() {
+    removehighlightAll(searchText);
+  }, {once : true});
+}
+
+function removehighlightAll(searchText){
+  var regExp=new RegExp('<span class="highlight">' + searchText + '</span>',"g");
+  $("#textarea").html(function() {
+      return $(this).html().replace(regExp, searchText);
+  });
+}
 
 
 /*Function to hide the "placeholder" text when div contains user-supplied text */
