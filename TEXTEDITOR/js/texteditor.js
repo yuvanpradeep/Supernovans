@@ -228,8 +228,6 @@ function searchButtonClicked() {
     var searchStr = $("#searchTxtBox").val();
 }
 
-<<<<<<< HEAD
-=======
 function superScript(){
     var selectedText = "";
   if (window.getSelection){
@@ -424,5 +422,4 @@ $(document).ready(function() {
     
 });
 
->>>>>>> develop
 
