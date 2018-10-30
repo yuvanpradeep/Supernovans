@@ -359,6 +359,29 @@ function underline() {
   }
 	
 }
+
+function fontSize(selectTag){
+	debugger
+	var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+	  var listValue = selectTag.options[selectTag.selectedIndex].text;
+     copysuccess = strVariable.style.fontsize(listValue); // executable command to alter the size of the text.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
 function centerAlign(){
   // var to check whether execCommand successfully executed
   var copysuccess;
