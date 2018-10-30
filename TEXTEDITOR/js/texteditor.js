@@ -298,6 +298,90 @@ function upperCase(){
   }
 }
 
+function boldText() {
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.bold(); // executable command to make the selected text as bold.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+
+}
+
+function italicsText() {
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.italics(); // executable command to make the selected text as italics.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+function underline() {
+	var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.underline(); // executable command to make the selected text as underline.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+	
+}
+
+function fontSize(selectTag){
+	debugger
+	var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+	  var listValue = selectTag.options[selectTag.selectedIndex].text;
+     copysuccess = strVariable.style.fontsize(listValue); // executable command to alter the size of the text.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
 function centerAlign(){
   // var to check whether execCommand successfully executed
   var copysuccess;

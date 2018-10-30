@@ -19,6 +19,30 @@
                     <button class="auto btnStyle btn btn-default" onclick="saveFile()"><img src="..\TEXTEDITOR\IMAGES\save.PNG" width = "40px" height = "30px"></img></button>
                     <button class="auto btnStyle btn btn-default" onclick="cut()"><img src="..\TEXTEDITOR\IMAGES\cut.PNG" width = "40px" height = "30px"></img></button>
                     <button class="auto btnStyle btn btn-default" onclick="copy()"><img src="..\TEXTEDITOR\IMAGES\copy.PNG" width = "40px" height = "30px"></img></button>
+					<button class="auto btnStyle btn btn-default" onclick="boldText()">B</button>
+					<button class="auto btnStyle btn btn-default" onclick="italicsText()">I</button>
+					<button class="auto btnStyle btn btn-default" onclick="underline()">U</button>
+					<button class="auto btnStyle btn btn-default" onclick="fontSize()">Size</button>
+					<select onchange="fontSize(this);">
+					<option value="xx-small">xx-small</option>
+					<option value="x-small">x-small</option>
+					<option value="small">small</option>
+					<option value="large">large</option>
+					<option value="x-large">x-large</option>
+					<option value="xx-large">xx-large</option>
+					<option value="100%">100%</option>
+					<option value="250%">250%</option>
+					<option value="2cm">2cm</option>
+					<option value="100px">100px</option>
+					</select>
+					<button class="auto btnStyle btn btn-default" onclick="fontStyle()">Style</button>
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+					<select onchange="fontStyle(this);">
+					<option value="Arial">arial</option>
+					<option value="Verdana">verdana</option>
+					<option value="Comic Sans MS">comic sans</option>
+					<option value="Mavenpro">Mavenpro</option>
+					</select>
                     <button class="auto btnStyle btn btn-default" id="undoBtn" onclick="undoAction()"><img src="..\TEXTEDITOR\IMAGES\undo.PNG" width = "40px" height = "30px"></img></button>
                     <button class="auto btnStyle btn btn-default" id="redoBtn" onclick="redoAction()"><img src="..\TEXTEDITOR\IMAGES\redo.PNG" width = "40px" height = "30px"></img></button>
 					<button class="auto btnStyle btn btn-default" onclick="superScript()">A<sup>a</sup></button>
@@ -71,6 +95,21 @@
     </div>
     <!-- The Modal -->
 <div id="myModal" class="modal">
+
+ 
+<script>
+function fontSize(selectTag) {
+    var listValue = selectTag.options[selectTag.selectedIndex].text;
+    document.getElementById("textarea").style.fontSize = listValue;
+}
+</script>
+
+<script>
+function fontStyle(selectTag) {
+    var listValue = selectTag.options[selectTag.selectedIndex].text;
+    document.getElementById("textarea").style.fontSize = listValue;
+}
+</script>
 
     <!-- Modal content -->
     <div class="mmodal-content">
