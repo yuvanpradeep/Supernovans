@@ -318,6 +318,26 @@ function boldText() {
   }
 
 }
+
+function italicsText() {
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.italics(); // executable command to make the selected text as italics.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
 function centerAlign(){
   // var to check whether execCommand successfully executed
   var copysuccess;
