@@ -73,9 +73,14 @@
                     <input type="text" class ="form-control btnStyle col-md-2" id="findText"/>
                     <button class="col-md-1 btnStyle btn btn-default" id="findReplace" onclick="replaceHelper()" style="padding:3px">Replace</button>
                     <input type="text" class ="form-control btnStyle col-md-2" id="replaceText"/>
-                    <button class="col-md-1 btnStyle btn btn-default" id="addHeader" onclick="addHeader()">Add Header</button>
-                    <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
                 </div>
+                <div class="row col-md-10">
+                  <button class="col-md-1 btnStyle btn btn-default" id="addHeader" onclick="addHeader()">Add Header</button>
+                  <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
+                  <button class="col-md-1 btnStyle btn btn-default" id="addFooter" onclick="addFooter()">Add Footer</button>
+                  <input type="text" class ="form-control btnStyle col-md-2" id="footerText" placeholder="Enter the footer..."/>
+                </div>
+
         </div>
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />
