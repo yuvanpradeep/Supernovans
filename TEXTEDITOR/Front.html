@@ -73,6 +73,8 @@
                     <input type="text" class ="form-control btnStyle col-md-2" id="findText"/>
                     <button class="col-md-1 btnStyle btn btn-default" id="findReplace" onclick="replaceHelper()" style="padding:3px">Replace</button>
                     <input type="text" class ="form-control btnStyle col-md-2" id="replaceText"/>
+                    <button class="col-md-1 btnStyle btn btn-default" id="addHeader" onclick="addHeader()">Add Header</button>
+                    <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
                 </div>
         </div>
         <div class="row textAreaPanel flex-grow-1">
@@ -96,7 +98,7 @@
     <!-- The Modal -->
 <div id="myModal" class="modal">
 
- 
+
 <script>
 function fontSize(selectTag) {
     var listValue = selectTag.options[selectTag.selectedIndex].text;
@@ -116,7 +118,7 @@ function fontStyle(selectTag) {
       <span class="close">&times;</span>
       <p id="cnt"></p>
     </div>
-  
+
   </div>
 </body>
 <script>

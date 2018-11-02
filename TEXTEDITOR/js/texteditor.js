@@ -357,7 +357,7 @@ function underline() {
   catch(e){
       copysuccess = false;
   }
-	
+
 }
 
 function fontSize(selectTag){
@@ -460,6 +460,20 @@ function bulletPoints(){
       copysuccess = false;
   }
 }
+
+
+/*Function for adding header*/
+function addHeader(){
+  console.log("into the header function");
+  var hText=document.getElementById("headerText").value;
+  if(hText===null || hText===undefined || hText===""){
+    alert("Enter some content to add as a header");
+  }else{
+    var textArea=document.getElementById("textarea");
+    textArea.innerHTML='<div align="center">'+hText+'</div>'+textArea.innerHTML;
+  }
+}
+
 
 /*Functions for find task*/
 function highlightHelper(){
