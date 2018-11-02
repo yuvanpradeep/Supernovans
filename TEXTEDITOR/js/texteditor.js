@@ -461,19 +461,30 @@ function bulletPoints(){
   }
 }
 
-
 /*Function for adding header*/
 function addHeader(){
-  console.log("into the header function");
   var hText=document.getElementById("headerText").value;
   if(hText===null || hText===undefined || hText===""){
     alert("Enter some content to add as a header");
   }else{
     var textArea=document.getElementById("textarea");
     textArea.innerHTML='<div align="center">'+hText+'</div>'+textArea.innerHTML;
+    hText.value="";
   }
 }
 
+/*Function for adding footer*/
+function addFooter(){
+  console.log("into the footer function");
+  var fText=document.getElementById("footerText").value;
+  if(fText===null || fText===undefined || fText===""){
+    alert("Enter some content to add as a footer");
+  }else{
+    var textArea=document.getElementById("textarea");
+    textArea.innerHTML=textArea.innerHTML+'<div id="footer" align="center">'+fText+'</div>';
+    fText.value="";
+  }
+}
 
 /*Functions for find task*/
 function highlightHelper(){
