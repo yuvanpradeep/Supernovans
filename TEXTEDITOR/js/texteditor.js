@@ -486,6 +486,43 @@ function addFooter(){
   }
 }
 
+var marginFlag=0;
+
+/*Function for adding margin*/
+function addMargin(){
+  var topVal=document.getElementById("topMargin").value;
+  var bottomVal=document.getElementById("bottomMargin").value;
+  var leftVal=document.getElementById("leftMargin").value;
+  var rightVal=document.getElementById("rightMargin").value;
+
+  if(document.getElementById("textarea").innerHTML.trim() ==="" || document.getElementById("textarea").innerHTML.trim() ===null || document.getElementById("textarea").innerHTML.trim() ===undefined ){
+    alert("Enter some text before adding Margins");
+  }else{
+    if(topVal===undefined || topVal==="" || topVal===undefined
+      || bottomVal===undefined || bottomVal==="" || bottomVal===undefined
+      || leftVal===undefined || leftVal==="" || leftVal===undefined
+      || rightVal===undefined || rightVal==="" || rightVal===undefined){
+        alert("Enter values in all four fields to add margin");
+      }else{
+        console.log("values are present");
+        if(marginFlag===0){
+          var textArea=document.getElementById("textarea");
+          innerVal=textArea.innerHTML;
+          textArea.innerHTML='<div id="addMarginId" class="addMargins">'+innerVal+'</div>';
+          marginFlag=1;
+        }
+        var addMarginDiv=document.getElementById("addMarginId");
+        addMarginDiv.style.marginTop=topVal+"px";
+        addMarginDiv.style.marginLeft=leftVal+"px";
+        addMarginDiv.style.marginBottom=bottomVal+"px";
+        addMarginDiv.style.marginRight=rightVal+"px";
+        //document.getElementById("addMarginId").style
+      }
+  }
+
+
+}
+
 /*Functions for find task*/
 function highlightHelper(){
   var searchText=$("#findText").val();

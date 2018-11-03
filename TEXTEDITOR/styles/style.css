@@ -97,6 +97,14 @@
   background-color: yellow;
 }
 
+/*CSS class for adding margins*/
+.addMargins{
+  top:5px;
+  bottom:5px;
+  left:5px;
+  right:5px;
+}
+
 /* CSS class for adding placeholder in a div area*/
 div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
     content: attr(data-placeholder);
