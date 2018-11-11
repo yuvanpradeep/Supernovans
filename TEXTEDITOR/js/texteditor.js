@@ -35,14 +35,6 @@ window.onclick = function(event) {
 }
 })
 
-$(document).ready(function(){
-
-    $( "#textarea" ).keyup(function() {
-        stateChange();
-      });
-
-})
-
 var isSearchTrigger = false
 function newFile()
 {
