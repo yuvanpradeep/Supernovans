@@ -70,7 +70,8 @@
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
-    height:80%
+    height:80%;
+    overflow: auto
 }
 
 /* The Close Button */
@@ -79,6 +80,8 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    position: fixed;
+    margin-left: 56%;
 }
 
 .close:hover,
