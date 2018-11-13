@@ -92,7 +92,19 @@
 }
 
 #textarea{
-  height: 100vh !important;
+  height: 100% !important;
+}
+
+/*CSS class to make a div sticky*/
+.makeSticky{
+  position: sticky;
+  top: 0;
+}
+
+/*CSS class to make the text area scrollable*/
+.adjustScroll{
+  overflow-y:scroll;
+  min-height:100vh
 }
 
 /* CSS class for highlighting a text */
