@@ -89,7 +89,13 @@
 }
 
 #textarea{
-  height: 100vh !important;
+  height: 100% !important;
+}
+
+/*CSS class to make the text area scrollable*/
+.adjustScroll{
+  overflow-y:scroll;
+  min-height:100vh
 }
 
 /* CSS class for highlighting a text */
