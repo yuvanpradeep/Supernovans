@@ -14,14 +14,14 @@
     <div class="container-fluid d-flex h-200 flex-column">
         <div class="row controlPanel makeSticky">
                 <div class="row col-md-10">
-                    <button class="auto btnStyle btn btn-default" onclick="newFile()"><img src="..\TEXTEDITOR\IMAGES\new.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" onclick="openFile()"><img src="..\TEXTEDITOR\IMAGES\open.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" onclick="saveFile()"><img src="..\TEXTEDITOR\IMAGES\save.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" onclick="cut()"><img src="..\TEXTEDITOR\IMAGES\cut.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" onclick="copy()"><img src="..\TEXTEDITOR\IMAGES\copy.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" onclick="boldText()">B</button>
-					<button class="auto btnStyle btn btn-default" onclick="italicsText()">I</button>
-					<button class="auto btnStyle btn btn-default" onclick="underline()">U</button>
+                    <button class="auto btnStyle btn btn-default" onclick="newFile()"><i class="fa fa-file-o"></i></button>
+                    <button class="auto btnStyle btn btn-default" onclick="openFile()"><i class="fa fa-folder-open"></i></button>
+                    <button class="auto btnStyle btn btn-default" onclick="saveFile()"><i class="fa fa-download"></i></button>
+                    <button class="auto btnStyle btn btn-default" onclick="cut()"><i class="fa fa-scissors"></i></button>
+                    <button class="auto btnStyle btn btn-default" onclick="copy()"><i class="fa fa-floppy-o"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="boldText()"><i class="fa fa-bold"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="italicsText()"><i class="fa fa-italic"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="underline()"><i class="fa fa-underline"></i></button>
 					<button class="auto btnStyle btn btn-default" onclick="fontSize()">Size</button>
 					<select onchange="fontSize(this);">
 					<option value="xx-small">xx-small</option>
@@ -43,21 +43,21 @@
 					<option value="Comic Sans MS">comic sans</option>
 					<option value="Mavenpro">Mavenpro</option>
 					</select>
-                    <button class="auto btnStyle btn btn-default" id="undoBtn" onclick="undoAction()"><img src="..\TEXTEDITOR\IMAGES\undo.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" id="redoBtn" onclick="redoAction()"><img src="..\TEXTEDITOR\IMAGES\redo.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" onclick="superScript()">A<sup>a</sup></button>
-					<button class="auto btnStyle btn btn-default" onclick="subScript()">A<sub>a</sub></button>
-                    <button class="auto btnStyle btn btn-default" onclick="leftAlign()"><img src="..\TEXTEDITOR\IMAGES\align_left.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" onclick="centerAlign()"><img src="..\TEXTEDITOR\IMAGES\align_center.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" onclick="rightAlign()"><img src="..\TEXTEDITOR\IMAGES\align_right.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" onclick="Justify()"><img src="..\TEXTEDITOR\IMAGES\Justify.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" onclick="Indent()"><img src="..\TEXTEDITOR\IMAGES\indent.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" onclick="Outdent()"><img src="..\TEXTEDITOR\IMAGES\outdent.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" onclick="upperCase()">Uppercase</button>
-					<button class="auto btnStyle btn btn-default" onclick="lowerCase()">Lowercase</button>
-					<button class="auto btnStyle btn btn-default" onclick="bulletPoints()">Bullets</button>
-                    <button class="auto btnStyle btn btn-default">highlight</button>
-                    <button class="col-md-1 btnStyle btn btn-default" id="previewBtn" onclick="documentpreview()">Preview</button>
+                    <button class="auto btnStyle btn btn-default" id="undoBtn" onclick="undoAction()"><i class="fa fa-undo"></i></button>
+                    <button class="auto btnStyle btn btn-default" id="redoBtn" onclick="redoAction()"><i class="fa fa-repeat"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="superScript()"><i class="fa fa-superscript"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="subScript()"><i class="fa fa-subscript"></i></button>
+                    <button class="auto btnStyle btn btn-default" onclick="leftAlign()"><i class="fa fa-align-left"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="centerAlign()"><i class="fa fa-align-center"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="rightAlign()"><i class="fa fa-align-right"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="Justify()"><i class="fa fa-align-justify"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="Indent()"><i class="fa fa-indent"></i></button>
+                    <button class="auto btnStyle btn btn-default" onclick="Outdent()"><i class="fa fa-outdent"></i></button>
+                    <button class="auto btnStyle btn btn-default" onclick="upperCase()"><i class="fa fa-font"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="lowerCase()"><i class="fa fa-tumblr"></i></button>
+					<button class="auto btnStyle btn btn-default" onclick="bulletPoints()"><i class="fa fa-list-ul"></i></button>
+                    <button class="auto btnStyle btn btn-default"><i class="fa fa-magic"></i></button>
+                    <button class="auto btnStyle btn btn-default" id="previewBtn" onclick="documentpreview()"><i class="fa fa-print"></i></button>
 				</div>
                 <!-- Search Box -->
                 <div id ="searchBtnGrp" class="row  input-group btnStyle col-md-2 ml-auto hstyle">
@@ -69,20 +69,20 @@
                     </div>
                 </div>
                 <div class="row col-md-10">
-                    <button class="col-md-1 btnStyle btn btn-default" id="findReplace" onclick="highlightHelper()">Find</button>
+                    <button class="auto btnStyle btn btn-default" id="findReplace" onclick="highlightHelper()"><i class="fa fa-eye"></i></button>
                     <input type="text" class ="form-control btnStyle col-md-2" id="findText"/>
-                    <button class="col-md-1 btnStyle btn btn-default" id="findReplace" onclick="replaceHelper()" style="padding:3px">Replace</button>
+                    <button class="auto btnStyle btn btn-default" id="findReplace" onclick="replaceHelper()" style="padding:3px"><i class="fa fa-retweet"></i></button>
                     <input type="text" class ="form-control btnStyle col-md-2" id="replaceText"/>
-                    <button class="col-md-1 btnStyle btn btn-default" id="addMargin" onclick="addMargin()">Margin(pxs)</button>
+                    <button class="auto btnStyle btn btn-default" id="addMargin" onclick="addMargin()"><i class="fa fa-columns"></i></button>
                     <input type="text" class ="form-control btnStyle col-md-1" id="topMargin" placeholder="top"/>
                     <input type="text" class ="form-control btnStyle col-md-1" id="bottomMargin" placeholder="bottom"/>
                     <input type="text" class ="form-control btnStyle col-md-1" id="leftMargin" placeholder="left"/>
                     <input type="text" class ="form-control btnStyle col-md-1" id="rightMargin" placeholder="right"/>
                 </div>
                 <div class="row col-md-10">
-                  <button class="col-md-1 btnStyle btn btn-default" id="addHeader" onclick="addHeader()">Add Header</button>
+                  <button class="auto btnStyle btn btn-default" id="addHeader" onclick="addHeader()">Header</button>
                   <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
-                  <button class="col-md-1 btnStyle btn btn-default" id="addFooter" onclick="addFooter()">Add Footer</button>
+                  <button class="auto btnStyle btn btn-default" id="addFooter" onclick="addFooter()">Footer</button>
                   <input type="text" class ="form-control btnStyle col-md-2" id="footerText" placeholder="Enter the footer..."/>
                 </div>
         </div>
