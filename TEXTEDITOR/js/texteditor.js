@@ -604,3 +604,8 @@ $(document).ready(function() {
     });
 
 });
+// Print preivew options
+function printpreview()
+{
+    window.print();
+}

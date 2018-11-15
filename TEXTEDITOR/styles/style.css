@@ -130,3 +130,15 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
 .highlight {
     background-color: orange;
   }
+
+
+    @media print {
+        .makeSticky {
+            display :  none;
+        }
+        .countfn
+        {
+            display :  none;
+        }
+    }
+
