@@ -1,0 +1,18 @@
+
+.fullScreen {
+    background-color:gainsboro;
+}
+
+.controlPanel {
+    background-color: gainsboro;
+}
+
+.textAreaPanel {
+    background-color:gainsboro;
+}
+
+.active {
+    background-color:  #167ffb !important;
+    color: white !important;
+}
+
