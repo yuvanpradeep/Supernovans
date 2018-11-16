@@ -12,7 +12,6 @@
 }
 
 .controlPanel {
-    background: #535353;
     padding-bottom: 3px;
     padding-right: 3px;
 }
@@ -22,12 +21,13 @@
 }
 
 .textAreaPanel {
-    background: #535353;
     padding-bottom: 6px;
     padding-top:1%;
     padding-right: 3px;
     padding-left: 3px;
 }
+
+
 
 .fullScreen {
     position: absolute;
@@ -130,3 +130,8 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
 .highlight {
     background-color: orange;
   }
+
+  .active {
+    background-color:  #167ffb !important;
+    color: white !important;
+}
