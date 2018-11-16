@@ -550,7 +550,19 @@ function removehighlightAll(searchText){
 function replaceHelper(){
   var searchText=$("#findText").val();
   var replaceText=$("#replaceText").val();
-  replaceAll(searchText,replaceText);
+  if(searchText==="" || searchText===undefined || searchText===null){
+    alert("Please enter some text in the find area");
+  }else{
+    if(replaceText==="" || replaceText===undefined || replaceText===null){
+      alert("Please enter some text in the replace area");
+    }else{
+      if($("#textarea").html().trim()==="" || $("#textarea").html()===undefined || $("#textarea").html().trim()===null){
+        alert("Please enter some text in the text area");
+      }else{
+        replaceAll(searchText,replaceText);
+      }
+    }
+  }
 }
 
 function replaceAll(searchText,replaceText){
