@@ -609,3 +609,7 @@ function printpreview()
 {
     window.print();
 }
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
