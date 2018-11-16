@@ -521,7 +521,7 @@ function highlightHelper(){
   if(searchText==="" || searchText===undefined || searchText===null){
     alert("Please enter some text in the find area");
   }else{
-    if($("#textarea").html()==="" || $("#textarea").html()===undefined || $("#textarea").html()===null){
+    if($("#textarea").html().trim()==="" || $("#textarea").html()===undefined || $("#textarea").html().trim()===null){
       alert("Please enter some text in the text area");
     }else{
       highlightAll(searchText);
