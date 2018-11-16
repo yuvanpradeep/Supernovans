@@ -36,6 +36,7 @@ window.onclick = function(event) {
 })
 
 var isSearchTrigger = false
+var currentTheme = 'Light'
 function newFile()
 {
    var txt;
@@ -617,16 +618,22 @@ $(document).ready(function() {
 
     $('#themeSelector button').click(function() {
         $(this).addClass('active').siblings().removeClass('active');
-        switch(this.value) {
-            case 'Dark':
-                if ($('#darktheme').length == 0) {
+        if (this.value == currentTheme) {
+            return;
+        }
+        else {
+            currentTheme = this.value;
+            switch(currentTheme) {
+                case 'Dark':
+                    $('#lighttheme').remove();
                     $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                    break;
+                case 'Light':
+                    $('#darktheme').remove();
+                    $('head').append('<link rel="stylesheet" id="lighttheme" type = "text/css" href ="styles/lighttheme.css"/>');
+                    break;
                 }
-                break;
-            case 'Light':
-                $('#darktheme').remove();
-                break;
-            }
+        }
     });
 
 });
