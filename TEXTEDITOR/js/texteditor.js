@@ -618,3 +618,12 @@ $(document).ready(function() {
     });
 
 });
+// Print preivew options
+function printpreview()
+{
+    window.print();
+}
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
