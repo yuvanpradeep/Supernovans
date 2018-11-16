@@ -603,6 +603,20 @@ $(document).ready(function() {
         }
     });
 
+    $('#themeSelector button').click(function() {
+        $(this).addClass('active').siblings().removeClass('active');
+        switch(this.value) {
+            case 'Dark':
+                if ($('#darktheme').length == 0) {
+                    $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                }
+                break;
+            case 'Light':
+                $('#darktheme').remove();
+                break;
+            }
+    });
+
 });
 // Print preivew options
 function printpreview()

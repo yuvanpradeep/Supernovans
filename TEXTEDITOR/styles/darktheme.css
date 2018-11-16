@@ -1,0 +1,28 @@
+.form-control {   
+    background-color: #2B2B2B !important;
+    color: whitesmoke !important;
+}
+
+.btn-default {
+    background-color: #6B6B6B !important;
+    color: white !important;
+}
+
+.fullScreen {
+    background-color: #2b2b2b;
+}
+
+.controlPanel {
+    background-color: #2b2b2b;
+}
+
+.textAreaPanel {
+    background-color: #2B2B2B;
+}
+
+.active {
+    background-color:  #167ffb !important;
+    color: white !important;
+}
+
+
