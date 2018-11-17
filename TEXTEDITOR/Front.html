@@ -39,20 +39,22 @@
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Pick a new font for your text" onclick="fontStyle()">Style</button>
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 					<select onchange="fontStyle(this);">
-					<option value="Arial">arial</option>
-					<option value="Verdana">verdana</option>
-					<option value="Comic Sans MS">comic sans</option>
-					<option value="Mavenpro">Mavenpro</option>
+                        <option value="Arial">arial</option>
+                        <option value="Verdana">verdana</option>
+                        <option value="Comic Sans MS">comic sans</option>
+                        <option value="Mavenpro">Mavenpro</option>
 					</select>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Undo Typing" id="undoBtn" onclick="undoAction()"><i class="fa fa-undo"></i></button>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Redo Typing" id="redoBtn" onclick="redoAction()"><i class="fa fa-repeat"></i></button>
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="SuperScript" onclick="superScript()"><i class="fa fa-superscript"></i></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="SubScript" onclick="subScript()"><i class="fa fa-subscript"></i></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Align your content with left margin" onclick="leftAlign()"><i class="fa fa-align-left"></i></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Center your content on the page" onclick="centerAlign()"><i class="fa fa-align-center"></i></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Align content with right margin" onclick="rightAlign()"><i class="fa fa-align-right"></i></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Distribute your text evenly between the margins" onclick="Justify()"><i class="fa fa-align-justify"></i></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Increase Indent" onclick="Indent()"><i class="fa fa-indent"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="SubScript" onclick="subScript()"><i class="fa fa-subscript"></i></button>
+                    <div class="btn-group btnStyle" role="group" aria-label="Basic example">
+                        <button class="auto  btn btn-default" data-toggle="tooltip"  title="Align your content with left margin" onclick="leftAlign()"><i class="fa fa-align-left"></i></button>
+                        <button class="auto  btn btn-default" data-toggle="tooltip"  title="Center your content on the page" onclick="centerAlign()"><i class="fa fa-align-center"></i></button>
+                        <button class="auto  btn btn-default" data-toggle="tooltip"  title="Align content with right margin" onclick="rightAlign()"><i class="fa fa-align-right"></i></button>
+                        <button class="auto  btn btn-default" data-toggle="tooltip"  title="Distribute your text evenly between the margins" onclick="Justify()"><i class="fa fa-align-justify"></i></button>                   
+                    </div>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Increase Indent" onclick="Indent()"><i class="fa fa-indent"></i></button>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="decrease Indent" onclick="Outdent()"><i class="fa fa-outdent"></i></button>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Upper case" onclick="upperCase()"><i class="fa fa-font"></i></button>
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Lower case" onclick="lowerCase()"><i class="fa fa-tumblr"></i></button>
@@ -62,8 +64,8 @@
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()"><i class="fa fa-print"></i></button>
                     <!-- Themes Selector -->
                     <div class="btnStyle btn-group btn-group-toggle" id="themeSelector">
-                        <button class="btn btn-default active" value="Light">Light</button>
-                        <button class="btn btn-default" value="Dark">Dark</button>
+                        <button class="btn btn-default active" value="Light" data-toggle="tooltip"  title="Switches to Light Theme">Light Theme</button>
+                        <button class="btn btn-default" value="Dark" data-toggle="tooltip"  title="Switches to Dark Theme">Dark Theme</button>
                     </div>
 				</div>
                 <!-- Search Box -->
