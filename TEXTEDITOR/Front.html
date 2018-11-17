@@ -14,25 +14,15 @@
 <body class="fullScreen" onload="buttondisable()">
     <div class="container-fluid d-flex h-200 flex-column">
         <div class="row controlPanel makeSticky">
-                <div class="row col-md-10">
-                    <button class="auto btnStyle btn btn-default" onclick="newFile()"><i class="fa fa-file-o"></i></button>
-                    <button class="auto btnStyle btn btn-default" onclick="openFile()"><i class="fa fa-folder-open"></i></button>
-                    <button class="auto btnStyle btn btn-default" onclick="saveFile()"><i class="fa fa-download"></i></button>
-                    <button class="auto btnStyle btn btn-default" onclick="cut()"><i class="fa fa-scissors"></i></button>
-                    <button class="auto btnStyle btn btn-default" onclick="copy()"><i class="fa fa-floppy-o"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="boldText()"><i class="fa fa-bold"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="italicsText()"><i class="fa fa-italic"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="underline()"><i class="fa fa-underline"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="fontSize()">Size</button>
                 <div class="row col-md-10 menuOpt">
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="New file" onclick="newFile()"><img src="..\TEXTEDITOR\IMAGES\new.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Open file" onclick="openFile()"><img src="..\TEXTEDITOR\IMAGES\open.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Save file" onclick="saveFile()"><img src="..\TEXTEDITOR\IMAGES\save.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Cut (Remove) the selection and you paste it somewhere else" onclick="cut()"><img src="..\TEXTEDITOR\IMAGES\cut.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Put a copy of selection on the clipboard and paste it somewhere else" onclick="copy()"><img src="..\TEXTEDITOR\IMAGES\copy.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Make your text Bold" onclick="boldText()">B</button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Italicize your text" onclick="italicsText()">I</button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Underline your text" onclick="underline()">U</button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="New file" onclick="newFile()"><i class="fa fa-file-o"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Open file" onclick="openFile()"><i class="fa fa-folder-open"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Save file" onclick="saveFile()"><i class="fa fa-download"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Cut (Remove) the selection and you paste it somewhere else" onclick="cut()"><i class="fa fa-scissors"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Put a copy of selection on the clipboard and paste it somewhere else" onclick="copy()"><i class="fa fa-floppy-o"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Make your text Bold" onclick="boldText()"><i class="fa fa-bold"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Italicize your text" onclick="italicsText()"><i class="fa fa-italic"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Underline your text" onclick="underline()"><i class="fa fa-underline"></i></button>
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Change the size of your font" onclick="fontSize()">Size</button>
 					<select onchange="fontSize(this);">
                         <option value="xx-small">xx-small</option>
@@ -54,43 +44,27 @@
 					<option value="Comic Sans MS">comic sans</option>
 					<option value="Mavenpro">Mavenpro</option>
 					</select>
-                    <button class="auto btnStyle btn btn-default" id="undoBtn" onclick="undoAction()"><i class="fa fa-undo"></i></button>
-                    <button class="auto btnStyle btn btn-default" id="redoBtn" onclick="redoAction()"><i class="fa fa-repeat"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="superScript()"><i class="fa fa-superscript"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="subScript()"><i class="fa fa-subscript"></i></button>
-                    <button class="auto btnStyle btn btn-default" onclick="leftAlign()"><i class="fa fa-align-left"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="centerAlign()"><i class="fa fa-align-center"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="rightAlign()"><i class="fa fa-align-right"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="Justify()"><i class="fa fa-align-justify"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="Indent()"><i class="fa fa-indent"></i></button>
-                    <button class="auto btnStyle btn btn-default" onclick="Outdent()"><i class="fa fa-outdent"></i></button>
-                    <button class="auto btnStyle btn btn-default" onclick="upperCase()"><i class="fa fa-font"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="lowerCase()"><i class="fa fa-tumblr"></i></button>
-					<button class="auto btnStyle btn btn-default" onclick="bulletPoints()"><i class="fa fa-list-ul"></i></button>
-                    <button class="auto btnStyle btn btn-default"><i class="fa fa-magic"></i></button>
-                    <button class="auto btnStyle btn btn-default" id="previewBtn" onclick="documentpreview()"><i class="fa fa-print"></i></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Undo Typing" id="undoBtn" onclick="undoAction()"><img src="..\TEXTEDITOR\IMAGES\undo.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Redo Typing" id="redoBtn" onclick="redoAction()"><img src="..\TEXTEDITOR\IMAGES\redo.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="SuperScript" onclick="superScript()">A<sup>a</sup></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="SubScript" onclick="subScript()">A<sub>a</sub></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Align your content with left margin" onclick="leftAlign()"><img src="..\TEXTEDITOR\IMAGES\align_left.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Center your content on the page" onclick="centerAlign()"><img src="..\TEXTEDITOR\IMAGES\align_center.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Align content with right margin" onclick="rightAlign()"><img src="..\TEXTEDITOR\IMAGES\align_right.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Distribute your text evenly between the margins" onclick="Justify()"><img src="..\TEXTEDITOR\IMAGES\Justify.PNG" width = "40px" height = "30px"></img></button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Increase Indent" onclick="Indent()"><img src="..\TEXTEDITOR\IMAGES\indent.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="decrease Indent" onclick="Outdent()"><img src="..\TEXTEDITOR\IMAGES\outdent.PNG" width = "40px" height = "30px"></img></button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Upper case" onclick="upperCase()">Uppercase</button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Lower case" onclick="lowerCase()">Lowercase</button>
-					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Create a bulleted list" onclick="bulletPoints()">Bullets</button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Text highlight">highlight</button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Undo Typing" id="undoBtn" onclick="undoAction()"><i class="fa fa-undo"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Redo Typing" id="redoBtn" onclick="redoAction()"><i class="fa fa-repeat"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="SuperScript" onclick="superScript()"><i class="fa fa-superscript"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="SubScript" onclick="subScript()"><i class="fa fa-subscript"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Align your content with left margin" onclick="leftAlign()"><i class="fa fa-align-left"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Center your content on the page" onclick="centerAlign()"><i class="fa fa-align-center"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Align content with right margin" onclick="rightAlign()"><i class="fa fa-align-right"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Distribute your text evenly between the margins" onclick="Justify()"><i class="fa fa-align-justify"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Increase Indent" onclick="Indent()"><i class="fa fa-indent"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="decrease Indent" onclick="Outdent()"><i class="fa fa-outdent"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Upper case" onclick="upperCase()"><i class="fa fa-font"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Lower case" onclick="lowerCase()"><i class="fa fa-tumblr"></i></button>
+					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Create a bulleted list" onclick="bulletPoints()"><i class="fa fa-list-ul"></i></button>
+                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Text highlight"><i class="fa fa-magic"></i></button>
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Preview the document" id="previewBtn" onclick="documentpreview()">Preview</button>
-                    <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()">Print</button>
+                    <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()"><i class="fa fa-print"></i></button>
                     <!-- Themes Selector -->
                     <div class="btnStyle btn-group btn-group-toggle" id="themeSelector">
                         <button class="btn btn-default active" value="Light">Light</button>
                         <button class="btn btn-default" value="Dark">Dark</button>
                     </div>
-
 				</div>
                 <!-- Search Box -->
                 <div id ="searchBtnGrp" class="row  input-group btnStyle col-md-2 ml-auto hstyle">
@@ -102,35 +76,23 @@
                     </div>
                 </div>
                 <div class="row col-md-10">
-                    <button class="auto btnStyle btn btn-default" id="findReplace" onclick="highlightHelper()"><i class="fa fa-eye"></i></button>
+                    <button class="col-md-1 btnStyle btn btn-default" id="findReplace" data-toggle="tooltip"  title="Find text in the content" onclick="highlightHelper()"><i class="fa fa-eye"></i></button>
                     <input type="text" class ="form-control btnStyle col-md-2" id="findText"/>
-                    <button class="auto btnStyle btn btn-default" id="findReplace" onclick="replaceHelper()" style="padding:3px"><i class="fa fa-retweet"></i></button>
+                    <button class="col-md-1 btnStyle btn btn-default" id="findReplace" data-toggle="tooltip"  title="Replace text with something else" onclick="replaceHelper()" style="padding:3px"><i class="fa fa-retweet"></i></button>
                     <input type="text" class ="form-control btnStyle col-md-2" id="replaceText"/>
-                    <button class="auto btnStyle btn btn-default" id="addMargin" onclick="addMargin()"><i class="fa fa-columns"></i></button>
-                    <button class="col-md-1 btnStyle btn btn-default" id="findReplace" data-toggle="tooltip"  title="Find text in the content" onclick="highlightHelper()">Find</button>
-                    <input type="text" class ="form-control btnStyle col-md-2" id="findText"/>
-                    <button class="col-md-1 btnStyle btn btn-default" id="findReplace" data-toggle="tooltip"  title="Replace text with something else" onclick="replaceHelper()" style="padding:3px">Replace</button>
-                    <input type="text" class ="form-control btnStyle col-md-2" id="replaceText"/>
-                    <button class="col-md-1 btnStyle btn btn-default" id="addMargin" data-toggle="tooltip"  title="Add margin" onclick="addMargin()">Margin(pxs)</button>
-
+                    <button class="col-md-1 btnStyle btn btn-default" id="addMargin" data-toggle="tooltip"  title="Add margin" onclick="addMargin()"><i class="fa fa-columns"></i></button>
                     <input type="text" class ="form-control btnStyle col-md-1" id="topMargin" placeholder="top"/>
                     <input type="text" class ="form-control btnStyle col-md-1" id="bottomMargin" placeholder="bottom"/>
                     <input type="text" class ="form-control btnStyle col-md-1" id="leftMargin" placeholder="left"/>
                     <input type="text" class ="form-control btnStyle col-md-1" id="rightMargin" placeholder="right"/>
                 </div>
                 <div class="row col-md-10">
-
-                  <button class="auto btnStyle btn btn-default" id="addHeader" onclick="addHeader()">Header</button>
+                  <button class="col-md-1 btnStyle btn btn-default" id="addHeader" data-toggle="tooltip"  title="Add header" onclick="addHeader()">Header</button>
                   <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
-                  <button class="auto btnStyle btn btn-default" id="addFooter" onclick="addFooter()">Footer</button>
-
-                  <button class="col-md-1 btnStyle btn btn-default" id="addHeader" data-toggle="tooltip"  title="Add header" onclick="addHeader()">Add Header</button>
-                  <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
-                  <button class="col-md-1 btnStyle btn btn-default" id="addFooter" data-toggle="tooltip"  title="Add footer" onclick="addFooter()">Add Footer</button>
-
+                  <button class="col-md-1 btnStyle btn btn-default" id="addFooter" data-toggle="tooltip"  title="Add footer" onclick="addFooter()">Footer</button>
                   <input type="text" class ="form-control btnStyle col-md-2" id="footerText" placeholder="Enter the footer..."/>
                 </div>
-        </div>
+       
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />
             <div id="textarea" contenteditable="true" class="form-control adjustScroll" placeholder="Enter you text here..." ></textarea>
