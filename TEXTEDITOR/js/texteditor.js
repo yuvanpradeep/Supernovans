@@ -536,13 +536,28 @@ function highlightHelper(){
 }
 
 function highlightAll(searchText){
-  var regExp=new RegExp(searchText,"g");
-  $("#textarea").html(function() {
-      return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
-  });
-  document.getElementById("textarea").addEventListener("click", function() {
-    removehighlightAll(searchText);
-  }, {once : true});
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(searchText))
+    {
+        var regExp=new RegExp(searchText,"g");
+        $("#textarea").html(function() {
+            return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
+        });
+        document.getElementById("textarea").addEventListener("click", function() {
+          removehighlightAll(searchText);
+        }, {once : true});
+    }
+    else{
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
+
 }
 
 function removehighlightAll(searchText){
