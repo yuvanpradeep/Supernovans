@@ -4,12 +4,14 @@ $(document).ready(function(){
     });
 /* Document preview functionality */
     var modal = document.getElementById('myModal');
+    var c_modal = document.getElementById('myModalvalid');
 
 // Get the button that opens the modal
 var btn = document.getElementById("previewBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var c_span = document.getElementsByClassName("c_close")[0];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
@@ -25,6 +27,9 @@ btn.onclick = function() {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
+}
+c_span.onclick = function() {
+    c_modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -531,13 +536,28 @@ function highlightHelper(){
 }
 
 function highlightAll(searchText){
-  var regExp=new RegExp(searchText,"g");
-  $("#textarea").html(function() {
-      return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
-  });
-  document.getElementById("textarea").addEventListener("click", function() {
-    removehighlightAll(searchText);
-  }, {once : true});
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(searchText))
+    {
+        var regExp=new RegExp(searchText,"g");
+        $("#textarea").html(function() {
+            return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
+        });
+        document.getElementById("textarea").addEventListener("click", function() {
+          removehighlightAll(searchText);
+        }, {once : true});
+    }
+    else{
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
+
 }
 
 function removehighlightAll(searchText){
@@ -597,7 +617,21 @@ function searchButtonClicked() {
 }
 
 function highlight(text) {
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(text))
+    {
     $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
+    }
+    else{
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
 }
 
 function remove_highlight() {

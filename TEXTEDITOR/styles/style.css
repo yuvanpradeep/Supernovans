@@ -74,6 +74,16 @@
     overflow: auto
 }
 
+.c_modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%;
+    height:25%;
+    overflow: auto
+}
+
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -86,6 +96,28 @@
 
 .close:hover,
 .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.c_close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: fixed;
+    margin-left: 21%;
+    margin-top:-10px;
+}
+#cutomiz
+{
+    text-align: center;
+    margin-top:30px;
+}
+
+.c_close:hover,
+.c_close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
