@@ -294,7 +294,8 @@ function upperCase(){
 function boldText() {
   var selectedText = "";
   if (window.getSelection){
-      selectedText = window.getSelection().toString();
+     selectedText = window.getSelection().toString().indexOf;
+	 selectedText1 = selectedText.bold();
   }
   strVariable=selectedText;
   // var to check whether execCommand successfully executed
@@ -303,7 +304,7 @@ function boldText() {
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
      copysuccess = strVariable.bold(); // executable command to make the selected text as bold.
-	res = currHtml.replace(selectedText, copysuccess)
+	res = currHtml.replace(window.getSelection().toString(), window.getSelection().toString().bold())
 	document.getElementById("textarea").innerHTML = res;
 }
   catch(e){
@@ -353,7 +354,7 @@ function underline() {
 
 }
 
-function fontSize(selectTag){
+/* function fontSize(selectTag){
 	debugger
 	var selectedText = "";
   if (window.getSelection){
@@ -373,7 +374,7 @@ function fontSize(selectTag){
   catch(e){
       copysuccess = false;
   }
-}
+} */
 
 function centerAlign(){
   // var to check whether execCommand successfully executed
