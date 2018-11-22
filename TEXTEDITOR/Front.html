@@ -3,17 +3,14 @@
 <head>
     <title>SuperNovans Text Editor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
-    <script  type = "text/javascript" src = "js/texteditor.js"></script>
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" intgrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type = "text/css" href ="styles/style.css"/>
     <link rel="stylesheet" id="lighttheme" type = "text/css" href ="styles/lighttheme.css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script  type = "text/javascript" src = "js/texteditor.js"></script>
 </head>
 <body class="fullScreen" onload="buttondisable()">
     <div class="container-fluid d-flex h-200 flex-column">
@@ -27,39 +24,31 @@
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Make your text Bold" onclick="boldText()"><i class="fa fa-bold"></i></button>
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Italicize your text" onclick="italicsText()"><i class="fa fa-italic"></i></button>
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Underline your text" onclick="underline()"><i class="fa fa-underline"></i></button>
-					
-					<div class="dropdown">
-						<button class="btn btnStyle btn btn-default" type="button" data-toggle="dropdown" title="Change the size of your font" onclick="fontSize()">Size</button> 
-						<span class="caret"></span></button>
-						<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>				
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" onclick="fontSize(event.target)">
-						
-						<a class="dropdown-item" href="#">xx-small</a>         
-                        <a class="dropdown-item" href="#">x-small</a>
-                        <a class="dropdown-item" href="#">small</a>
-                        <a class="dropdown-item" href="#">large</a>
-						<a class="dropdown-item" href="#">x-large</a>
-						<a class="dropdown-item" href="#">xx-large</a>
-						<a class="dropdown-item" href="#">100%</a>
-						<a class="dropdown-item" href="#">250%</a>
-						<a class="dropdown-item" href="#">2cm</a>
-						<a class="dropdown-item" href="#">100px</a>
-						
-						</div>
-					</div> 
-					<div class="dropdown">
-					<button class="btn btnStyle btn btn-default" type="button" data-toggle="dropdown"  title="Pick a new font for your text" onclick="fontStyle()">Style</button>
-					<span class="caret"></span></button>
-					<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					
-                        <a class="dropdown-item" href="#">arial</option>
-                        <a class="dropdown-item" href="#">verdana</option>
-                        <a class="dropdown-item" href="#">comic sans</option>
-                        <a class="dropdown-item" href="#">mavenpro</option>
-					
-					</div>
-					</div>
+                    
+                    <div class="auto btnStyle btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" title="Change the size of your font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Size
+                        </button>
+                        <div class="dropdown-menu" id="size-dropdown">
+                          <a class="dropdown-item" href="#">xx-small</a>
+                          <a class="dropdown-item" href="#">x-small</a>
+                          <a class="dropdown-item" href="#">small</a>
+                          <a class="dropdown-item" href="#">large</a>
+                        </div>
+                    </div>
+                    
+                    <div class="auto btnStyle btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" title="Pick a new font for your text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Style
+                        </button>
+                        <div class="dropdown-menu" id="style-dropdown">
+                          <a class="dropdown-item" value="lol" href="#">arial</a>
+                          <a class="dropdown-item" href="#">verdana</a>
+                          <a class="dropdown-item" href="#">comic sans</a>
+                          <a class="dropdown-item" href="#">mavenpro</a>
+                        </div>
+                    </div>
+
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Undo Typing" id="undoBtn" onclick="undoAction()"><i class="fa fa-undo"></i></button>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Redo Typing" id="redoBtn" onclick="redoAction()"><i class="fa fa-repeat"></i></button>
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="SuperScript" onclick="superScript()"><i class="fa fa-superscript"></i></button>
@@ -78,10 +67,6 @@
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Text highlight"><i class="fa fa-magic"></i></button>
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Preview the document" id="previewBtn" onclick="documentpreview()">Preview</button>
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()">Print</button>
-                    <!-- Themes Selector -->
-                    <div class="btnStyle btn-group btn-group-toggle" id="themeSelector">
-                        <button class="btn btn-default active" value="Light">Light</button>
-                        <button class="btn btn-default" value="Dark">Dark</button>
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()"><i class="fa fa-print"></i></button>
                     <!-- Themes Selector -->
                     <div class="btnStyle btn-group btn-group-toggle" id="themeSelector">
@@ -140,35 +125,6 @@
 
     <!-- The Modal -->
 <div id="myModal" class="modal">
-
-<script>
-$(textarea).ready(underline(){
-    $("p").on({
-        mouseenter: underline(){
-        $(this).css({"text-decoration": "underline"});
-        }
-    });    
-});
-</script>
-
-        
-
-
-
-<script>
-function fontSize(selectTag) {
-    var listValue = selectTag.innerHTML;
-    document.getElementById("textarea").style.fontSize = listValue;
-}
-</script>
-
-<script>
-function fontStyle(selectTag) {
-    var listValue = selectTag.innerHTML;
-    document.getElementById("textarea").style.fontFamily = listValue;
-}
-</script>
-
     <!-- Modal content -->
     <div class="mmodal-content">
       <span class="close" data-toggle="tooltip"  title="Close">&times;</span>

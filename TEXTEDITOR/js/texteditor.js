@@ -300,7 +300,8 @@ function upperCase(){
 function boldText() {
   var selectedText = "";
   if (window.getSelection){
-      selectedText = window.getSelection().toString();
+     selectedText = window.getSelection().toString().indexOf;
+	 selectedText1 = selectedText.bold();
   }
   strVariable=selectedText;
   
@@ -727,6 +728,18 @@ $(document).ready(function() {
                     break;
                 }
         }
+    });
+
+    $("#size-dropdown a").click(function(e){
+        e.preventDefault(); 
+        var selOption = $(this).text();
+        console.log(selOption);
+    });
+
+    $("#style-dropdown a").click(function(e){
+        e.preventDefault(); 
+        var selOption = $(this).text();
+        console.log(selOption);
     });
 
 });
