@@ -61,6 +61,11 @@
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Create a bulleted list" onclick="bulletPoints()"><i class="fa fa-list-ul"></i></button>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Text highlight"><i class="fa fa-magic"></i></button>
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Preview the document" id="previewBtn" onclick="documentpreview()">Preview</button>
+                    <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()">Print</button>
+                    <!-- Themes Selector -->
+                    <div class="btnStyle btn-group btn-group-toggle" id="themeSelector">
+                        <button class="btn btn-default active" value="Light">Light</button>
+                        <button class="btn btn-default" value="Dark">Dark</button>
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()"><i class="fa fa-print"></i></button>
                     <!-- Themes Selector -->
                     <div class="btnStyle btn-group btn-group-toggle" id="themeSelector">
@@ -93,6 +98,8 @@
                   <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
                   <button class="col-md-1 btnStyle btn btn-default" id="addFooter" data-toggle="tooltip"  title="Add footer" onclick="addFooter()">Footer</button>
                   <input type="text" class ="form-control btnStyle col-md-2" id="footerText" placeholder="Enter the footer..."/>
+				  <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Capital Heading" onclick="capitalHeading()">ABC</button>
+				  <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Small Heading" onclick="smallHeading()">abc</button>
                 </div>
        
         <div class="row textAreaPanel flex-grow-1">

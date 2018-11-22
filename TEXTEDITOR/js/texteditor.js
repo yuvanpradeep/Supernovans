@@ -617,6 +617,51 @@ function searchButtonClicked() {
     }
 }
 
+function capitalHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
+	 document.getElementById("textarea").style.fontSize = "xx-large";
+	 document.getElementById("textarea").style.fontWeight = "600";
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+
+function smallHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as uppercase.
+	 document.getElementById("textarea").style.fontSize = "xx-large";
+	 document.getElementById("textarea").style.fontWeight = "600";
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
 function highlight(text) {
     var checkExist = $("#textarea").text();
     var modal = document.getElementById('myModalvalid');
@@ -654,6 +699,16 @@ $(document).ready(function() {
 
     $('#themeSelector button').click(function() {
         $(this).addClass('active').siblings().removeClass('active');
+        switch(this.value) {
+            case 'Dark':
+                if ($('#darktheme').length == 0) {
+                    $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                }
+                break;
+            case 'Light':
+                $('#darktheme').remove();
+                break;
+            }
         if (this.value == currentTheme) {
             return;
         }
