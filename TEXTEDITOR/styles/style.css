@@ -47,7 +47,9 @@
 {
     display: inline-block;
 }
-
+.Upper{
+    text-transform: uppercase;
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -171,6 +173,10 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
     background-color:  #167ffb !important;
     color: white !important;
 }
+p.b {
+    font-style: italic;
+}
+
 
 @media print {
     .makeSticky {
