@@ -276,66 +276,14 @@ function rightAlign(){
     copysuccess = false;
     }
 }
-/* Code for Uppercase */
+/* Uppercase Functionality for the text selected*/
 function upperCase(){
-//   var selectedText = "";
-//   if (window.getSelection){
-//       selectedText = window.getSelection().toString();
-//   }
-//   strVariable=selectedText;
-//   // var to check whether execCommand successfully executed
-//   var copysuccess = [];
-//   var res;
-//   try{
-// 	 currHtml = document.getElementById("textarea").innerHTML;
-//      copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
-// 	res = currHtml.replace(selectedText, copysuccess)
-// 	document.getElementById("textarea").innerHTML = res;
-
-// var selectedText = "";
-// if (window.getSelection){
-//     selectedText = window.getSelection().toString();
-// }
-// strVariable=selectedText;
-// console.log(strVariable);
-// // var to check whether execCommand successfully executed
-// var copysuccess="";
-// var res;
-// try{
-//    //urrHtml = document.getElementById("textarea").innerHTML;
-//    currHtml = document.getElementById("textarea").innerHTML;
-//    console.log(currHtml);
-
-//    copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
-//    console.log(copysuccess);
-
-//   res = currHtml.replace(selectedText, copysuccess)
-//   console.log(res);
-
-//   //document.getElementById("textarea").innerHTML = res;
-//   document.getElementById("textarea").innerHTML = res;
-//   //document.getElementById("textarea").innerHTML.toUpperCase();
-// var start = $('#textarea')[0].selectionStart;
-// //var end = $('#textarea').prop('selectionEnd');
-// console.log(start);
-// //console.log(end);
 var selectedText = selHTML().toUpperCase();
-// var selectedText = selHTML();
-// var element = selectedText.target;
-// if (element.style.font == "italic")
-// {
-//     var selectedText = selHTML().italics.toUpperCase();
-// }
 console.log(selectedText);
 document.getElementById("textarea").innerHTML = document.getElementById("textarea").innerHTML.replace(selHTML(),selectedText);
-
-// }
-//   catch(e){
-//       copysuccess = false;
-
-//   }
 }
 
+/*Text selection*/
 function selHTML() {
 
     if (window.ActiveXObject) {
@@ -347,11 +295,6 @@ function selHTML() {
     var w = getSelection().getRangeAt(0);
     
     w.surroundContents(nNd);
-    // if ( document.getElementsByTagName("p").style.fontStyle == "italic")
-    // {
-    //     flag  = 1;
-    //     console.log(w);
-    // }
     return nNd.innerHTML;
 }
 
