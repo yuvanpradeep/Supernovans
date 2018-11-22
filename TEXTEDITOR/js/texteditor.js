@@ -4,12 +4,14 @@ $(document).ready(function(){
     });
 /* Document preview functionality */
     var modal = document.getElementById('myModal');
+    var c_modal = document.getElementById('myModalvalid');
 
 // Get the button that opens the modal
 var btn = document.getElementById("previewBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var c_span = document.getElementsByClassName("c_close")[0];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
@@ -26,6 +28,9 @@ btn.onclick = function() {
 span.onclick = function() {
     modal.style.display = "none";
 }
+c_span.onclick = function() {
+    c_modal.style.display = "none";
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -36,6 +41,7 @@ window.onclick = function(event) {
 })
 
 var isSearchTrigger = false
+var currentTheme = 'Light'
 function newFile()
 {
    var txt;
@@ -521,7 +527,7 @@ function highlightHelper(){
   if(searchText==="" || searchText===undefined || searchText===null){
     alert("Please enter some text in the find area");
   }else{
-    if($("#textarea").html()==="" || $("#textarea").html()===undefined || $("#textarea").html()===null){
+    if($("#textarea").html().trim()==="" || $("#textarea").html()===undefined || $("#textarea").html().trim()===null){
       alert("Please enter some text in the text area");
     }else{
       highlightAll(searchText);
@@ -530,13 +536,28 @@ function highlightHelper(){
 }
 
 function highlightAll(searchText){
-  var regExp=new RegExp(searchText,"g");
-  $("#textarea").html(function() {
-      return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
-  });
-  document.getElementById("textarea").addEventListener("click", function() {
-    removehighlightAll(searchText);
-  }, {once : true});
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(searchText))
+    {
+        var regExp=new RegExp(searchText,"g");
+        $("#textarea").html(function() {
+            return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
+        });
+        document.getElementById("textarea").addEventListener("click", function() {
+          removehighlightAll(searchText);
+        }, {once : true});
+    }
+    else{
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
+
 }
 
 function removehighlightAll(searchText){
@@ -550,7 +571,19 @@ function removehighlightAll(searchText){
 function replaceHelper(){
   var searchText=$("#findText").val();
   var replaceText=$("#replaceText").val();
-  replaceAll(searchText,replaceText);
+  if(searchText==="" || searchText===undefined || searchText===null){
+    alert("Please enter some text in the find area");
+  }else{
+    if(replaceText==="" || replaceText===undefined || replaceText===null){
+      alert("Please enter some text in the replace area");
+    }else{
+      if($("#textarea").html().trim()==="" || $("#textarea").html()===undefined || $("#textarea").html().trim()===null){
+        alert("Please enter some text in the text area");
+      }else{
+        replaceAll(searchText,replaceText);
+      }
+    }
+  }
 }
 
 function replaceAll(searchText,replaceText){
@@ -629,7 +662,21 @@ function smallHeading(){
 }
 
 function highlight(text) {
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(text))
+    {
     $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
+    }
+    else{
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
 }
 
 function remove_highlight() {
@@ -660,6 +707,22 @@ $(document).ready(function() {
                 $('#darktheme').remove();
                 break;
             }
+        if (this.value == currentTheme) {
+            return;
+        }
+        else {
+            currentTheme = this.value;
+            switch(currentTheme) {
+                case 'Dark':
+                    $('#lighttheme').remove();
+                    $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                    break;
+                case 'Light':
+                    $('#darktheme').remove();
+                    $('head').append('<link rel="stylesheet" id="lighttheme" type = "text/css" href ="styles/lighttheme.css"/>');
+                    break;
+                }
+        }
     });
 
 });
