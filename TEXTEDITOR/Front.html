@@ -29,34 +29,35 @@
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Underline your text" onclick="underline()"><i class="fa fa-underline"></i></button>
 					
 					<div class="dropdown">
-						<button class="auto btnStyle btn btn-default" type="button" data-toggle="dropdown" title="Change the size of your font" onclick="fontSize()">Size</button> 
-						
+						<button class="btn btnStyle btn btn-default" type="button" data-toggle="dropdown" title="Change the size of your font" onclick="fontSize()">Size</button> 
+						<span class="caret"></span></button>
 						<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>				
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" onclick="fontSize(event.target)">
 						
-						<a class="dropdown-item" href="#">xx-small</a>
+						<a class="dropdown-item" href="#">xx-small</a>         
                         <a class="dropdown-item" href="#">x-small</a>
                         <a class="dropdown-item" href="#">small</a>
                         <a class="dropdown-item" href="#">large</a>
-						<!-- <a class="dropdown-item" href="#">x-large</a>
+						<a class="dropdown-item" href="#">x-large</a>
 						<a class="dropdown-item" href="#">xx-large</a>
 						<a class="dropdown-item" href="#">100%</a>
 						<a class="dropdown-item" href="#">250%</a>
 						<a class="dropdown-item" href="#">2cm</a>
-						<a class="dropdown-item" href="#">100px</a> -->
+						<a class="dropdown-item" href="#">100px</a>
 						
 						</div>
 					</div> 
 					<div class="dropdown">
-					<button class="auto btnStyle btn btn-default" type="button" data-toggle="dropdown"  title="Pick a new font for your text" onclick="fontStyle(this)">Style</button>
+					<button class="btn btnStyle btn btn-default" type="button" data-toggle="dropdown"  title="Pick a new font for your text" onclick="fontStyle()">Style</button>
+					<span class="caret"></span></button>
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<select onchange="fontStyle(this);">
+					
                         <a class="dropdown-item" href="#">arial</option>
                         <a class="dropdown-item" href="#">verdana</option>
                         <a class="dropdown-item" href="#">comic sans</option>
                         <a class="dropdown-item" href="#">mavenpro</option>
-					</select>
+					
 					</div>
 					</div>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Undo Typing" id="undoBtn" onclick="undoAction()"><i class="fa fa-undo"></i></button>
@@ -131,17 +132,26 @@
     <!-- The Modal -->
 <div id="myModal" class="modal">
 
+<script>
+$(textarea).ready(underline(){
+    $("p").on({
+        mouseenter: underline(){
+        $(this).css({"text-decoration": "underline"});
+        }
+    });    
+});
+</script>
 
 <script>
 function fontSize(selectTag) {
-    var listValue = selectTag.options[selectTag.selectedIndex].text;
+    var listValue = selectTag.innerHTML;
     document.getElementById("textarea").style.fontSize = listValue;
 }
 </script>
 
 <script>
 function fontStyle(selectTag) {
-    var listValue = selectTag.options[selectTag.selectedIndex].text;
+    var listValue = selectTag.innerHTML;
     document.getElementById("textarea").style.fontFamily = listValue;
 }
 </script>

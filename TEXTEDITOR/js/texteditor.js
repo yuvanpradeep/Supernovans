@@ -294,17 +294,17 @@ function upperCase(){
 function boldText() {
   var selectedText = "";
   if (window.getSelection){
-     selectedText = window.getSelection().toString().indexOf;
-	 selectedText1 = selectedText.bold();
+      selectedText = window.getSelection().toString();
   }
   strVariable=selectedText;
+  
   // var to check whether execCommand successfully executed
   var copysuccess = [];
   var res;
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.bold(); // executable command to make the selected text as bold.
-	res = currHtml.replace(window.getSelection().toString(), window.getSelection().toString().bold())
+     copysuccess = strVariable.bold(); // executable command to make the selected text as italics.
+	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
 }
   catch(e){
@@ -347,6 +347,7 @@ function underline() {
      copysuccess = strVariable.underline(); // executable command to make the selected text as underline.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
+	
 }
   catch(e){
       copysuccess = false;
