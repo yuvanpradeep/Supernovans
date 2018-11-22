@@ -172,6 +172,8 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
     color: white !important;
 }
 
+/* Print preview option and hiding the menu area*/
+
 @media print {
     .makeSticky {
         display :  none;
@@ -179,6 +181,14 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
     .countfn
     {
         display :  none;
+    }
+    #printBtn
+    {
+        display: none;
+    }
+    #selectedFile
+    {
+    display : none;
     }
 }
 

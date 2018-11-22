@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $('#textarea').keyup(function(){
         stateChange();
     });
@@ -303,13 +304,14 @@ function boldText() {
 	 selectedText1 = selectedText.bold();
   }
   strVariable=selectedText;
+  
   // var to check whether execCommand successfully executed
   var copysuccess = [];
   var res;
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.bold(); // executable command to make the selected text as bold.
-	res = currHtml.replace(window.getSelection().toString(), window.getSelection().toString().bold())
+     copysuccess = strVariable.bold(); // executable command to make the selected text as italics.
+	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
 }
   catch(e){
@@ -352,6 +354,7 @@ function underline() {
      copysuccess = strVariable.underline(); // executable command to make the selected text as underline.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
+	
 }
   catch(e){
       copysuccess = false;
@@ -617,6 +620,51 @@ function searchButtonClicked() {
     }
 }
 
+function capitalHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
+	 document.getElementById("textarea").style.fontSize = "xx-large";
+	 document.getElementById("textarea").style.fontWeight = "600";
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+
+function smallHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as uppercase.
+	 document.getElementById("textarea").style.fontSize = "xx-large";
+	 document.getElementById("textarea").style.fontWeight = "600";
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
 function highlight(text) {
     var checkExist = $("#textarea").text();
     var modal = document.getElementById('myModalvalid');
@@ -625,6 +673,7 @@ function highlight(text) {
     $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
     }
     else{
+        // Alert when no result found
         values = "No results found!!"
         chk = document.getElementById("textarea").innerText;
         if(chk != "" && chk != null)
@@ -653,6 +702,16 @@ $(document).ready(function() {
 
     $('#themeSelector button').click(function() {
         $(this).addClass('active').siblings().removeClass('active');
+        switch(this.value) {
+            case 'Dark':
+                if ($('#darktheme').length == 0) {
+                    $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                }
+                break;
+            case 'Light':
+                $('#darktheme').remove();
+                break;
+            }
         if (this.value == currentTheme) {
             return;
         }
@@ -690,6 +749,4 @@ function printpreview()
     window.print();
 }
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+

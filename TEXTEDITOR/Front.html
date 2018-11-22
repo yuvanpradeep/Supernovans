@@ -66,6 +66,7 @@
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Create a bulleted list" onclick="bulletPoints()"><i class="fa fa-list-ul"></i></button>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Text highlight"><i class="fa fa-magic"></i></button>
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Preview the document" id="previewBtn" onclick="documentpreview()">Preview</button>
+                    <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()">Print</button>
                     <button class="col-md-1 btnStyle btn btn-default" data-toggle="tooltip"  title="Print the document" id="printBtn" onclick="printpreview()"><i class="fa fa-print"></i></button>
                     <!-- Themes Selector -->
                     <div class="btnStyle btn-group btn-group-toggle" id="themeSelector">
@@ -98,50 +99,32 @@
                   <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
                   <button class="col-md-1 btnStyle btn btn-default" id="addFooter" data-toggle="tooltip"  title="Add footer" onclick="addFooter()">Footer</button>
                   <input type="text" class ="form-control btnStyle col-md-2" id="footerText" placeholder="Enter the footer..."/>
+				  <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Capital Heading" onclick="capitalHeading()">ABC</button>
+				  <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Small Heading" onclick="smallHeading()">abc</button>
                 </div>
        
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />
-            <div id="textarea" contenteditable="true" class="form-control adjustScroll" placeholder="Enter you text here..." >
+            <div id="textarea" contenteditable="true" class="form-control adjustScroll" placeholder="Enter you text here..." ></textarea>
+            </div>
+            <div class="row countfn">
+                <div class="Count"><label>Characters: <p id="charcount"></p></label></div>
+                <div class="WCount"><label>Words: <p id="wordcount"></p></label></div>
+            </div>
         </div>
-        <div class="row countfn">
-            <div class="Count"><label>Characters: <p id="charcount"></p></label></div>
-            <div class="WCount"><label>Words: <p id="wordcount"></p></label></div>
-        </div>
-    </div>
-    <div id="saveTaskModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                 <div class="modal-header">
-                    <h5 class="modal-title">File Saved Successfully!</h5>
+        <div id="saveTaskModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">File Saved Successfully!</h5>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- Modal -->
 
     <!-- The Modal -->
 <div id="myModal" class="modal">
-
-
-        
-
-
-
-<script>
-function fontSize(selectTag) {
-    var listValue = selectTag.options[selectTag.selectedIndex].text;
-    document.getElementById("textarea").style.fontSize = listValue;
-}
-</script>
-
-<script>
-function fontStyle(selectTag) {
-    var listValue = selectTag.options[selectTag.selectedIndex].text;
-    document.getElementById("textarea").style.fontFamily = listValue;
-}
-</script>
-
     <!-- Modal content -->
     <div class="mmodal-content">
       <span class="close" data-toggle="tooltip"  title="Close">&times;</span>
