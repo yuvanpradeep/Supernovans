@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $('#textarea').keyup(function(){
         stateChange();
     });
@@ -624,6 +625,7 @@ function highlight(text) {
     $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
     }
     else{
+        // Alert when no result found
         values = "No results found!!"
         chk = document.getElementById("textarea").innerText;
         if(chk != "" && chk != null)
@@ -677,6 +679,4 @@ function printpreview()
     window.print();
 }
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+
