@@ -303,12 +303,13 @@ function boldText() {
       selectedText = window.getSelection().toString();
   }
   strVariable=selectedText;
+  
   // var to check whether execCommand successfully executed
   var copysuccess = [];
   var res;
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.bold(); // executable command to make the selected text as bold.
+     copysuccess = strVariable.bold(); // executable command to make the selected text as italics.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
 }
@@ -352,6 +353,7 @@ function underline() {
      copysuccess = strVariable.underline(); // executable command to make the selected text as underline.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
+	
 }
   catch(e){
       copysuccess = false;
@@ -359,7 +361,7 @@ function underline() {
 
 }
 
-function fontSize(selectTag){
+/* function fontSize(selectTag){
 	debugger
 	var selectedText = "";
   if (window.getSelection){
@@ -379,7 +381,7 @@ function fontSize(selectTag){
   catch(e){
       copysuccess = false;
   }
-}
+} */
 
 function centerAlign(){
   // var to check whether execCommand successfully executed
