@@ -733,12 +733,14 @@ $(document).ready(function() {
     $("#size-dropdown a").click(function(e){
         e.preventDefault(); 
         var selOption = $(this).text();
+		fontSize(selOption);
         console.log(selOption);
     });
 
     $("#style-dropdown a").click(function(e){
         e.preventDefault(); 
         var selOption = $(this).text();
+		fontStyle(selOption);
         console.log(selOption);
     });
 
@@ -749,4 +751,11 @@ function printpreview()
     window.print();
 }
 
+function fontSize(option) {
+    document.getElementById("textarea").style.fontSize = option;
+}
+	
+function fontStyle(option) {
+    document.getElementById("textarea").style.fontFamily = option;
+}
 
