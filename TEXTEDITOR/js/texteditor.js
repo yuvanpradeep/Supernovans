@@ -671,6 +671,18 @@ $(document).ready(function() {
         }
     });
 
+    $("#size-dropdown a").click(function(e){
+        e.preventDefault(); 
+        var selOption = $(this).text();
+        console.log(selOption);
+    });
+
+    $("#style-dropdown a").click(function(e){
+        e.preventDefault(); 
+        var selOption = $(this).text();
+        console.log(selOption);
+    });
+
 });
 // Print preivew options
 function printpreview()
