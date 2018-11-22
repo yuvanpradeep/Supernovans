@@ -182,5 +182,13 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
     {
         display :  none;
     }
+    #printBtn
+    {
+        display: none;
+    }
+    #selectedFile
+    {
+    display : none;
+    }
 }
 

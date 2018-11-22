@@ -96,21 +96,21 @@
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />
             <div id="textarea" contenteditable="true" class="form-control adjustScroll" placeholder="Enter you text here..." ></textarea>
+            </div>
+            <div class="row countfn">
+                <div class="Count"><label>Characters: <p id="charcount"></p></label></div>
+                <div class="WCount"><label>Words: <p id="wordcount"></p></label></div>
+            </div>
         </div>
-        <div class="row countfn">
-            <div class="Count"><label>Characters: <p id="charcount"></p></label></div>
-            <div class="WCount"><label>Words: <p id="wordcount"></p></label></div>
-        </div>
-    </div>
-    <div id="saveTaskModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                 <div class="modal-header">
-                    <h5 class="modal-title">File Saved Successfully!</h5>
+        <div id="saveTaskModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">File Saved Successfully!</h5>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- Modal -->
 
     <!-- The Modal -->
