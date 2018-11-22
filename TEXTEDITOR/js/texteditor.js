@@ -1,15 +1,18 @@
 $(document).ready(function(){
+
     $('#textarea').keyup(function(){
         stateChange();
     });
 /* Document preview functionality */
     var modal = document.getElementById('myModal');
+    var c_modal = document.getElementById('myModalvalid');
 
 // Get the button that opens the modal
 var btn = document.getElementById("previewBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var c_span = document.getElementsByClassName("c_close")[0];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
@@ -25,6 +28,9 @@ btn.onclick = function() {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
+}
+c_span.onclick = function() {
+    c_modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -533,13 +539,28 @@ function highlightHelper(){
 }
 
 function highlightAll(searchText){
-  var regExp=new RegExp(searchText,"g");
-  $("#textarea").html(function() {
-      return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
-  });
-  document.getElementById("textarea").addEventListener("click", function() {
-    removehighlightAll(searchText);
-  }, {once : true});
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(searchText))
+    {
+        var regExp=new RegExp(searchText,"g");
+        $("#textarea").html(function() {
+            return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
+        });
+        document.getElementById("textarea").addEventListener("click", function() {
+          removehighlightAll(searchText);
+        }, {once : true});
+    }
+    else{
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
+
 }
 
 function removehighlightAll(searchText){
@@ -598,8 +619,68 @@ function searchButtonClicked() {
     }
 }
 
+function capitalHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
+	 document.getElementById("textarea").style.fontSize = "xx-large";
+	 document.getElementById("textarea").style.fontWeight = "600";
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+
+function smallHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as uppercase.
+	 document.getElementById("textarea").style.fontSize = "xx-large";
+	 document.getElementById("textarea").style.fontWeight = "600";
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
 function highlight(text) {
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(text))
+    {
     $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
+    }
+    else{
+        // Alert when no result found
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
 }
 
 function remove_highlight() {
@@ -620,6 +701,16 @@ $(document).ready(function() {
 
     $('#themeSelector button').click(function() {
         $(this).addClass('active').siblings().removeClass('active');
+        switch(this.value) {
+            case 'Dark':
+                if ($('#darktheme').length == 0) {
+                    $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                }
+                break;
+            case 'Light':
+                $('#darktheme').remove();
+                break;
+            }
         if (this.value == currentTheme) {
             return;
         }
@@ -645,6 +736,4 @@ function printpreview()
     window.print();
 }
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+
