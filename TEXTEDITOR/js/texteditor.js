@@ -278,9 +278,14 @@ function rightAlign(){
 }
 /* Uppercase Functionality for the text selected*/
 function upperCase(){
+    try {
 var selectedText = selHTML().toUpperCase();
 console.log(selectedText);
 document.getElementById("textarea").innerHTML = document.getElementById("textarea").innerHTML.replace(selHTML(),selectedText);
+}
+catch(e){
+    copysuccess = false;
+}
 }
 
 /*Text selection*/
@@ -415,19 +420,10 @@ function Outdent(){
 /* Code for Lowercase */
 
 function lowerCase(){
-  var selectedText = "";
-  if (window.getSelection){
-      selectedText = window.getSelection().toString();
-  }
-  strVariable=selectedText;
-  // var to check whether execCommand successfully executed
-  var copysuccess = [];
-  var res;
   try{
-	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as lowercase.
-	res = currHtml.replace(selectedText, copysuccess)
-	document.getElementById("textarea").innerHTML = res;
+    var selectedText = selHTML().toLowerCase();
+    console.log(selectedText);
+    document.getElementById("textarea").innerHTML = document.getElementById("textarea").innerHTML.replace(selHTML(),selectedText);
 }
   catch(e){
       copysuccess = false;
