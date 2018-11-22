@@ -24,7 +24,7 @@
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Make your text Bold" onclick="boldText()"><i class="fa fa-bold"></i></button>
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Italicize your text" onclick="italicsText()"><i class="fa fa-italic"></i></button>
 					<button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Underline your text" onclick="underline()"><i class="fa fa-underline"></i></button>
-                    
+
                     <div class="auto btnStyle btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" title="Change the size of your font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Size
@@ -36,7 +36,7 @@
                           <a class="dropdown-item" href="#">large</a>
                         </div>
                     </div>
-                    
+
                     <div class="auto btnStyle btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" title="Pick a new font for your text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Style
@@ -57,7 +57,7 @@
                         <button class="auto  btn btn-default" data-toggle="tooltip"  title="Align your content with left margin" onclick="leftAlign()"><i class="fa fa-align-left"></i></button>
                         <button class="auto  btn btn-default" data-toggle="tooltip"  title="Center your content on the page" onclick="centerAlign()"><i class="fa fa-align-center"></i></button>
                         <button class="auto  btn btn-default" data-toggle="tooltip"  title="Align content with right margin" onclick="rightAlign()"><i class="fa fa-align-right"></i></button>
-                        <button class="auto  btn btn-default" data-toggle="tooltip"  title="Distribute your text evenly between the margins" onclick="Justify()"><i class="fa fa-align-justify"></i></button>                   
+                        <button class="auto  btn btn-default" data-toggle="tooltip"  title="Distribute your text evenly between the margins" onclick="Justify()"><i class="fa fa-align-justify"></i></button>
                     </div>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Increase Indent" onclick="Indent()"><i class="fa fa-indent"></i></button>
                     <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="decrease Indent" onclick="Outdent()"><i class="fa fa-outdent"></i></button>
@@ -101,8 +101,11 @@
                   <input type="text" class ="form-control btnStyle col-md-2" id="footerText" placeholder="Enter the footer..."/>
 				  <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Capital Heading" onclick="capitalHeading()">ABC</button>
 				  <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Small Heading" onclick="smallHeading()">abc</button>
+                  <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  id="hyperlinkBtn" title="Make Hyperlink" onclick="makeHyperLink()">
+                    <i class="fa fa-external-link"></i>
+                  </button>
                 </div>
-       
+
         <div class="row textAreaPanel flex-grow-1">
 		    <input type="file" id="selectedFile" class="hiddenfile" />
             <div id="textarea" contenteditable="true" class="form-control adjustScroll" placeholder="Enter you text here..." ></textarea>
