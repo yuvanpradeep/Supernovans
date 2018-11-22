@@ -300,8 +300,8 @@ function upperCase(){
 function boldText() {
   var selectedText = "";
   if (window.getSelection){
-     selectedText = window.getSelection().toString().indexOf;
-	 selectedText1 = selectedText.bold();
+     selectedText = window.getSelection().toString();
+	 
   }
   strVariable=selectedText;
   
@@ -310,7 +310,7 @@ function boldText() {
   var res;
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.bold(); // executable command to make the selected text as italics.
+     copysuccess = strVariable.bold(); // executable command to make the selected text as bold.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
 }
