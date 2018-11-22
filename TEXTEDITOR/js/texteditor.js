@@ -304,7 +304,7 @@ function boldText() {
 	 selectedText1 = selectedText.bold();
   }
   strVariable=selectedText;
-  
+
   // var to check whether execCommand successfully executed
   var copysuccess = [];
   var res;
@@ -354,7 +354,7 @@ function underline() {
      copysuccess = strVariable.underline(); // executable command to make the selected text as underline.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
-	
+
 }
   catch(e){
       copysuccess = false;
@@ -564,6 +564,26 @@ function highlightAll(searchText){
 
 }
 
+/*Function to make a text as hyperlink*/
+function makeHyperLink(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  if( selectedText.trim()==="" || selectedText.trim() ===null){
+    alert("Please select some text to be hyperlinked");
+  }
+  else {
+    var result,hyperLinkText,trimmedText;
+    currentHTML = document.getElementById("textarea").innerHTML;
+    trimmedText=selectedText.trim();
+    hyperLinkText= "<span contentEditable='false'><a href='http://www." + trimmedText + ".com' target='_blank'>"+ trimmedText +"</a></span>";
+    result=currentHTML.replace(selectedText,hyperLinkText);
+    document.getElementById("textarea").innerHTML=result;
+  }
+
+}
+
 function removehighlightAll(searchText){
   var regExp=new RegExp('<span class="highlight">' + searchText + '</span>',"g");
   $("#textarea").html(function() {
@@ -731,13 +751,13 @@ $(document).ready(function() {
     });
 
     $("#size-dropdown a").click(function(e){
-        e.preventDefault(); 
+        e.preventDefault();
         var selOption = $(this).text();
         console.log(selOption);
     });
 
     $("#style-dropdown a").click(function(e){
-        e.preventDefault(); 
+        e.preventDefault();
         var selOption = $(this).text();
         console.log(selOption);
     });
@@ -748,5 +768,3 @@ function printpreview()
 {
     window.print();
 }
-
-
