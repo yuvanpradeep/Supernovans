@@ -564,24 +564,34 @@ function highlightAll(searchText){
 
 }
 
-/*Function to make a text as hyperlink*/
-function makeHyperLink(){
+var hyperLinkText,trimmedText,selectedHyperlinkText;
+
+/*Function to call hyperlink modal*/
+function callHyperLinkModal(){
+
   var selectedText = "";
   if (window.getSelection){
       selectedText = window.getSelection().toString();
   }
+  selectedHyperlinkText=selectedText;
   if( selectedText.trim()==="" || selectedText.trim() ===null){
     alert("Please select some text to be hyperlinked");
   }
   else {
-    var result,hyperLinkText,trimmedText;
-    currentHTML = document.getElementById("textarea").innerHTML;
+    document.getElementById('modalHyperlinkId').value="";
+    $("#hyperlinkModal").modal({backdrop: false, dismiss:true });
     trimmedText=selectedText.trim();
-    hyperLinkText= "<span contentEditable='false'><a href='http://www." + trimmedText + ".com' target='_blank'>"+ trimmedText +"</a></span>";
-    result=currentHTML.replace(selectedText,hyperLinkText);
-    document.getElementById("textarea").innerHTML=result;
   }
 
+}
+
+/*Function to make a text as hyperlink*/
+function makeHyperLink(userLinkText){
+    var result;
+    currentHTML = document.getElementById("textarea").innerHTML;
+    hyperLinkText= "<span contentEditable='false'><a href='http://www." + userLinkText + "' target='_blank'>"+ trimmedText +"</a></span>";
+    result=currentHTML.replace(selectedHyperlinkText,hyperLinkText);
+    document.getElementById("textarea").innerHTML=result;
 }
 
 function removehighlightAll(searchText){
