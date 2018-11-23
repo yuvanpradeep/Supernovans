@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $('#textarea').keyup(function(){
         stateChange();
     });
@@ -306,15 +307,17 @@ function selHTML() {
 function boldText() {
   var selectedText = "";
   if (window.getSelection){
-      selectedText = window.getSelection().toString();
+     selectedText = window.getSelection().toString().indexOf;
+	 selectedText1 = selectedText.bold();
   }
   strVariable=selectedText;
+
   // var to check whether execCommand successfully executed
   var copysuccess = [];
   var res;
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.bold(); // executable command to make the selected text as bold.
+     copysuccess = strVariable.bold(); // executable command to make the selected text as italics.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
 }
@@ -358,6 +361,7 @@ function underline() {
      copysuccess = strVariable.underline(); // executable command to make the selected text as underline.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
+
 }
   catch(e){
       copysuccess = false;
@@ -365,7 +369,7 @@ function underline() {
 
 }
 
-function fontSize(selectTag){
+/* function fontSize(selectTag){
 	debugger
 	var selectedText = "";
   if (window.getSelection){
@@ -385,7 +389,7 @@ function fontSize(selectTag){
   catch(e){
       copysuccess = false;
   }
-}
+} */
 
 function centerAlign(){
   // var to check whether execCommand successfully executed
@@ -558,6 +562,36 @@ function highlightAll(searchText){
 
 }
 
+var hyperLinkText,trimmedText,selectedHyperlinkText;
+
+/*Function to call hyperlink modal*/
+function callHyperLinkModal(){
+
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  selectedHyperlinkText=selectedText;
+  if( selectedText.trim()==="" || selectedText.trim() ===null){
+    alert("Please select some text to be hyperlinked");
+  }
+  else {
+    document.getElementById('modalHyperlinkId').value="";
+    $("#hyperlinkModal").modal({backdrop: false, dismiss:true });
+    trimmedText=selectedText.trim();
+  }
+
+}
+
+/*Function to make a text as hyperlink*/
+function makeHyperLink(userLinkText){
+    var result;
+    currentHTML = document.getElementById("textarea").innerHTML;
+    hyperLinkText= "<span contentEditable='false'><a href='http://www." + userLinkText + "' target='_blank'>"+ trimmedText +"</a></span>";
+    result=currentHTML.replace(selectedHyperlinkText,hyperLinkText);
+    document.getElementById("textarea").innerHTML=result;
+}
+
 function removehighlightAll(searchText){
   var regExp=new RegExp('<span class="highlight">' + searchText + '</span>',"g");
   $("#textarea").html(function() {
@@ -614,6 +648,51 @@ function searchButtonClicked() {
     }
 }
 
+function capitalHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
+	 document.getElementById("textarea").style.fontSize = "xx-large";
+	 document.getElementById("textarea").style.fontWeight = "600";
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+
+function smallHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as uppercase.
+	 document.getElementById("textarea").style.fontSize = "xx-large";
+	 document.getElementById("textarea").style.fontWeight = "600";
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
 function highlight(text) {
     var checkExist = $("#textarea").text();
     var modal = document.getElementById('myModalvalid');
@@ -622,6 +701,7 @@ function highlight(text) {
     $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
     }
     else{
+        // Alert when no result found
         values = "No results found!!"
         chk = document.getElementById("textarea").innerText;
         if(chk != "" && chk != null)
@@ -650,6 +730,16 @@ $(document).ready(function() {
 
     $('#themeSelector button').click(function() {
         $(this).addClass('active').siblings().removeClass('active');
+        switch(this.value) {
+            case 'Dark':
+                if ($('#darktheme').length == 0) {
+                    $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                }
+                break;
+            case 'Light':
+                $('#darktheme').remove();
+                break;
+            }
         if (this.value == currentTheme) {
             return;
         }
@@ -668,13 +758,21 @@ $(document).ready(function() {
         }
     });
 
+    $("#size-dropdown a").click(function(e){
+        e.preventDefault();
+        var selOption = $(this).text();
+        console.log(selOption);
+    });
+
+    $("#style-dropdown a").click(function(e){
+        e.preventDefault();
+        var selOption = $(this).text();
+        console.log(selOption);
+    });
+
 });
 // Print preivew options
 function printpreview()
 {
     window.print();
 }
-
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })

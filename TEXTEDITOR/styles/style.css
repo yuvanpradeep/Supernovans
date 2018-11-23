@@ -178,6 +178,8 @@ p.b {
 }
 
 
+/* Print preview option and hiding the menu area*/
+
 @media print {
     .makeSticky {
         display :  none;
@@ -185,6 +187,14 @@ p.b {
     .countfn
     {
         display :  none;
+    }
+    #printBtn
+    {
+        display: none;
+    }
+    #selectedFile
+    {
+    display : none;
     }
 }
 
