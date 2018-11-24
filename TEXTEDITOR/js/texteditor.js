@@ -299,7 +299,7 @@ function selHTML() {
 
     var nNd = document.createElement("p");
     var w = getSelection().getRangeAt(0);
-    
+
     w.surroundContents(nNd);
     return nNd.innerHTML;
 }
@@ -592,6 +592,37 @@ function makeHyperLink(userLinkText){
     document.getElementById("textarea").innerHTML=result;
 }
 
+var saveVar;
+
+/*Function to call the actual interval on body load for every interval set by user in seconds*/
+function callAutoSave(timeInterval){
+  timeIntervalInt=parseInt(timeInterval);
+  saveVar=setInterval(autoSave,timeIntervalInt*1000);
+}
+
+/*Function to autosave the text document in local storage*/
+function autoSave(){
+  var textElement=document.getElementById("textarea");
+  localStorage.setItem("docTest",textElement.innerHTML);
+}
+
+/*Function to load the text on to the textarea from the localStorage*/
+function loadSavedData(){
+  var textElement=document.getElementById("textarea");
+  if(localStorage.getItem("docTest")!=null){
+    textElement.innerHTML=localStorage.getItem("docTest");
+  }else {
+    textElement.innerHTML="";
+  }
+}
+
+/*Function to be invoked on bodyLoad*/
+function bodyLoadFunctions(){
+  buttondisable();
+  loadSavedData();
+  callAutoSave(5);
+}
+
 function removehighlightAll(searchText){
   var regExp=new RegExp('<span class="highlight">' + searchText + '</span>',"g");
   $("#textarea").html(function() {
@@ -768,6 +799,28 @@ $(document).ready(function() {
         e.preventDefault();
         var selOption = $(this).text();
         console.log(selOption);
+    });
+
+    $("#autosave-dropdown a").click(function(e){
+        e.preventDefault();
+        var selOption = $(this).text();
+        var getNo=selOption.split(' ')[0];
+
+        //for 5 seconds
+        if(parseInt(getNo)===5){
+          clearInterval(saveVar);
+          callAutoSave(5);
+        }
+        //for 60 seconds
+        else if (parseInt(getNo) === 60) {
+          clearInterval(saveVar);
+          callAutoSave(60);
+        }
+        //for 10 minutes
+        else {
+          clearInterval(saveVar);
+          callAutoSave(600);
+        }
     });
 
 });
