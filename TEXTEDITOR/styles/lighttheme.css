@@ -19,3 +19,8 @@
 .mmodal-content {
     background-color: #fefefe;
 }
+
+.dropdown-item:focus {
+    background-color:  #167ffb !important;
+}
+
