@@ -678,9 +678,9 @@ function replaceAll(searchText,replaceText){
 function searchButtonClicked() {
     var searchQuery = $("#searchTxtBox").val();
     remove_highlight();
+    $("#clearBtn").show();
     isSearchTrigger = false;
     if (searchQuery.length > 0) {
-        $("#clearBtn").show();
         isSearchTrigger = true;
         highlight(searchQuery.trim());
     }
