@@ -6,6 +6,7 @@ $(document).ready(function(){
 /* Document preview functionality */
     var modal = document.getElementById('myModal');
     var c_modal = document.getElementById('myModalvalid');
+    var flag =0;
 
 // Get the button that opens the modal
 var btn = document.getElementById("previewBtn");
@@ -276,25 +277,31 @@ function rightAlign(){
     copysuccess = false;
     }
 }
-/* Code for Uppercase */
+/* Uppercase Functionality for the text selected*/
 function upperCase(){
-  var selectedText = "";
-  if (window.getSelection){
-      selectedText = window.getSelection().toString();
-  }
-  strVariable=selectedText;
-  // var to check whether execCommand successfully executed
-  var copysuccess = [];
-  var res;
-  try{
-	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
-	res = currHtml.replace(selectedText, copysuccess)
-	document.getElementById("textarea").innerHTML = res;
+    try {
+var selectedText = selHTML().toUpperCase();
+console.log(selectedText);
+document.getElementById("textarea").innerHTML = document.getElementById("textarea").innerHTML.replace(selHTML(),selectedText);
 }
-  catch(e){
-      copysuccess = false;
-  }
+catch(e){
+    copysuccess = false;
+}
+}
+
+/*Text selection*/
+function selHTML() {
+
+    if (window.ActiveXObject) {
+        var c = document.selection.createRange();
+        return c.htmlText;
+    }
+
+    var nNd = document.createElement("p");
+    var w = getSelection().getRangeAt(0);
+
+    w.surroundContents(nNd);
+    return nNd.innerHTML;
 }
 
 function boldText() {
@@ -304,7 +311,7 @@ function boldText() {
 	 
   }
   strVariable=selectedText;
-  
+
   // var to check whether execCommand successfully executed
   var copysuccess = [];
   var res;
@@ -354,7 +361,7 @@ function underline() {
      copysuccess = strVariable.underline(); // executable command to make the selected text as underline.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
-	
+
 }
   catch(e){
       copysuccess = false;
@@ -417,19 +424,10 @@ function Outdent(){
 /* Code for Lowercase */
 
 function lowerCase(){
-  var selectedText = "";
-  if (window.getSelection){
-      selectedText = window.getSelection().toString();
-  }
-  strVariable=selectedText;
-  // var to check whether execCommand successfully executed
-  var copysuccess = [];
-  var res;
   try{
-	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as lowercase.
-	res = currHtml.replace(selectedText, copysuccess)
-	document.getElementById("textarea").innerHTML = res;
+    var selectedText = selHTML().toLowerCase();
+    console.log(selectedText);
+    document.getElementById("textarea").innerHTML = document.getElementById("textarea").innerHTML.replace(selHTML(),selectedText);
 }
   catch(e){
       copysuccess = false;
@@ -562,6 +560,67 @@ function highlightAll(searchText){
         }
     }
 
+}
+
+var hyperLinkText,trimmedText,selectedHyperlinkText;
+
+/*Function to call hyperlink modal*/
+function callHyperLinkModal(){
+
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  selectedHyperlinkText=selectedText;
+  if( selectedText.trim()==="" || selectedText.trim() ===null){
+    alert("Please select some text to be hyperlinked");
+  }
+  else {
+    document.getElementById('modalHyperlinkId').value="";
+    $("#hyperlinkModal").modal({backdrop: false, dismiss:true });
+    trimmedText=selectedText.trim();
+  }
+
+}
+
+/*Function to make a text as hyperlink*/
+function makeHyperLink(userLinkText){
+    var result;
+    currentHTML = document.getElementById("textarea").innerHTML;
+    hyperLinkText= "<span contentEditable='false'><a href='http://www." + userLinkText + "' target='_blank'>"+ trimmedText +"</a></span>";
+    result=currentHTML.replace(selectedHyperlinkText,hyperLinkText);
+    document.getElementById("textarea").innerHTML=result;
+}
+
+var saveVar;
+
+/*Function to call the actual interval on body load for every interval set by user in seconds*/
+function callAutoSave(timeInterval){
+  timeIntervalInt=parseInt(timeInterval);
+  saveVar=setInterval(autoSave,timeIntervalInt*1000);
+}
+
+/*Function to autosave the text document in local storage*/
+function autoSave(){
+  var textElement=document.getElementById("textarea");
+  localStorage.setItem("docTest",textElement.innerHTML);
+}
+
+/*Function to load the text on to the textarea from the localStorage*/
+function loadSavedData(){
+  var textElement=document.getElementById("textarea");
+  if(localStorage.getItem("docTest")!=null){
+    textElement.innerHTML=localStorage.getItem("docTest");
+  }else {
+    textElement.innerHTML="";
+  }
+}
+
+/*Function to be invoked on bodyLoad*/
+function bodyLoadFunctions(){
+  buttondisable();
+  loadSavedData();
+  callAutoSave(5);
 }
 
 function removehighlightAll(searchText){
@@ -731,17 +790,39 @@ $(document).ready(function() {
     });
 
     $("#size-dropdown a").click(function(e){
-        e.preventDefault(); 
+        e.preventDefault();
         var selOption = $(this).text();
 		fontSize(selOption);
         console.log(selOption);
     });
 
     $("#style-dropdown a").click(function(e){
-        e.preventDefault(); 
+        e.preventDefault();
         var selOption = $(this).text();
 		fontStyle(selOption);
         console.log(selOption);
+    });
+
+    $("#autosave-dropdown a").click(function(e){
+        e.preventDefault();
+        var selOption = $(this).text();
+        var getNo=selOption.split(' ')[0];
+
+        //for 5 seconds
+        if(parseInt(getNo)===5){
+          clearInterval(saveVar);
+          callAutoSave(5);
+        }
+        //for 60 seconds
+        else if (parseInt(getNo) === 60) {
+          clearInterval(saveVar);
+          callAutoSave(60);
+        }
+        //for 10 minutes
+        else {
+          clearInterval(saveVar);
+          callAutoSave(600);
+        }
     });
 
 });
