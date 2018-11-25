@@ -687,12 +687,12 @@ function capitalHeading(){
   strVariable=selectedText;
   // var to check whether execCommand successfully executed
   var copysuccess = [];
+  var heading = [];
   var res;
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
-	 document.getElementById("textarea").style.fontSize = "xx-large";
-	 document.getElementById("textarea").style.fontWeight = "600";
+     heading = strVariable.fontsize(16);
+     copysuccess = heading.toUpperCase();    // executable command to make the selected text as uppercase.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
 }
@@ -700,7 +700,6 @@ function capitalHeading(){
       copysuccess = false;
   }
 }
-
 
 function smallHeading(){
   var selectedText = "";
@@ -710,12 +709,12 @@ function smallHeading(){
   strVariable=selectedText;
   // var to check whether execCommand successfully executed
   var copysuccess = [];
+  var heading = [];
   var res;
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as uppercase.
-	 document.getElementById("textarea").style.fontSize = "xx-large";
-	 document.getElementById("textarea").style.fontWeight = "600";
+	 heading = strVariable.fontsize(16);
+     copysuccess = heading.toLowerCase(); // executable command to make the selected text as uppercase. 
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
 }
