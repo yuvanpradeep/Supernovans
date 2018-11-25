@@ -743,6 +743,13 @@ $(document).ready(function() {
 		fontStyle(selOption);
         console.log(selOption);
     });
+	
+	$("#color-dropdown a").click(function(e){
+        e.preventDefault(); 
+        var selOption = $(this).text();
+		fontColor(selOption);
+        console.log(selOption);
+    });
 
 });
 // Print preivew options
@@ -757,5 +764,9 @@ function fontSize(option) {
 	
 function fontStyle(option) {
     document.getElementById("textarea").style.fontFamily = option;
+}
+
+function fontColor(option) {
+    document.getElementById("textarea").style.color = option;
 }
 
