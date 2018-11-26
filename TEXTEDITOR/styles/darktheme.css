@@ -39,4 +39,9 @@
     color:gainsboro;
 }
 
+.dropdown-item:focus {
+    background-color:  black !important;
+}
+
+
 
