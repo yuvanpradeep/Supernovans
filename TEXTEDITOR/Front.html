@@ -125,16 +125,16 @@
                 <input type="text" class ="form-control btnStyle col-md-1" id="rightMargin" placeholder="right"/>
             </div>
             <div class="row col-md-10">
-                <button class="col-md-1 btnStyle btn btn-default" id="addHeader" data-toggle="tooltip"  title="Add header" onclick="addHeader()">Header</button>
-                <input type="text" class ="form-control btnStyle col-md-2" id="headerText" placeholder="Enter the header..."/>
+                <button class="col-md-1 btn btnStyle btn-default" id="addHeader" data-toggle="tooltip"  title="Add header" onclick="addHeader()">Header</button>
+                <input type="text" class ="form-control col-md-2 btnStyle" id="headerText" placeholder="Enter the header..."/>
                 <button class="col-md-1 btnStyle btn btn-default" id="addFooter" data-toggle="tooltip"  title="Add footer" onclick="addFooter()">Footer</button>
                 <input type="text" class ="form-control btnStyle col-md-2" id="footerText" placeholder="Enter the footer..."/>
                 <div class = "btn-group btnStyle" role="group">
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Capital Heading" onclick="capitalHeading()">ABC</button>
-                    <button class="auto btnStyle btn btn-default" data-toggle="tooltip"  title="Small Heading" onclick="smallHeading()">abc</button>
+                    <button class="auto btn btn-default" data-toggle="tooltip"  title="Capital Heading" onclick="capitalHeading()">ABC</button>
+                    <button class="auto btn btn-default" data-toggle="tooltip"  title="Small Heading" onclick="smallHeading()">abc</button>
                 </div>
                 <button class="auto btnStyle btn btn-default" data-toggle="tooltip" id="hyperlinkBtn" title="Make Hyperlink" onclick="callHyperLinkModal()">
-                <i class="fa fa-external-link"></i>
+                    <i class="fa fa-external-link"></i>
                 </button>
                 <div class="btnStyle">
                     <button class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -154,8 +154,8 @@
             <div id="textarea" contenteditable="true" class="form-control adjustScroll" placeholder="Enter you text here..." ></textarea>
             </div>
             <div class="row countfn">
-                <div class="Count"><label>Characters: <p id="charcount"></p></label></div>
-                <div class="WCount"><label>Words: <p id="wordcount"></p></label></div>
+                <div class="Count"><label class="custom-label">Characters: <p id="charcount"></p></label></div>
+                <div class="WCount"><label class="custom-label">Words: <p id="wordcount"></p></label></div>
             </div>
         </div>
 
