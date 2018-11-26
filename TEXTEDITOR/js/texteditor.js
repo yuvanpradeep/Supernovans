@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $("#clearBtn").click(function(){
     $(this).hide();
-    $("#searchTxtBox").val(' ');
+    $("#searchTxtBox").val('');
     remove_highlight();
     })
 /* Document preview functionality */
