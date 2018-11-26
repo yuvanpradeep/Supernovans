@@ -3,6 +3,12 @@ $(document).ready(function(){
     $('#textarea').keyup(function(){
         stateChange();
     });
+
+    $("#clearBtn").click(function(){
+    $(this).hide();
+    $("#searchTxtBox").val(' ');
+    remove_highlight();
+    })
 /* Document preview functionality */
     var modal = document.getElementById('myModal');
     var c_modal = document.getElementById('myModalvalid');
@@ -197,9 +203,9 @@ function Wordcount()
 {
     var wordcountvalue = 0;
     s = document.getElementById("textarea").innerText;
-	s = s.replace(/(^\s*)|(\s*$)/gi,"");
-	s = s.replace(/[ ]{2,}/gi," ");
-    s = s.replace(/\n /,"\n");
+	s = s.replace(/(^\s*)|(\s*$)/gi,""); // remove spaces from start + end
+	s = s.replace(/[ ]{2,}/gi," "); // 2 or more spaces to 1
+    s = s.replace(/\n/g,' '); // newlines to space
     wordcountvalue = s.split(' ').length;
 	document.getElementById("wordcount").innerHTML = wordcountvalue;
 }
@@ -672,10 +678,11 @@ function replaceAll(searchText,replaceText){
 function searchButtonClicked() {
     var searchQuery = $("#searchTxtBox").val();
     remove_highlight();
+    $("#clearBtn").show();
     isSearchTrigger = false;
     if (searchQuery.length > 0) {
         isSearchTrigger = true;
-        highlight(searchQuery);
+        highlight(searchQuery.trim());
     }
 }
 
