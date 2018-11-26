@@ -86,7 +86,7 @@ function saveFile()
     if (text.length > 0)
     {
         downloadFile(text, "NewTextDocument.txt", "text/plain;charset=utf-8");
-        $('#saveTaskModal').modal()
+        $('#saveTaskModal').modal({backdrop: false, dismiss:true })
     }
 }
 
