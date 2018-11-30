@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $("#clearBtn").click(function(){
     $(this).hide();
-    $("#searchTxtBox").val(' ');
+    $("#searchTxtBox").val('');
     remove_highlight();
     })
 /* Document preview functionality */
@@ -86,7 +86,7 @@ function saveFile()
     if (text.length > 0)
     {
         downloadFile(text, "NewTextDocument.txt", "text/plain;charset=utf-8");
-        $('#saveTaskModal').modal()
+        $('#saveTaskModal').modal({backdrop: false, dismiss:true })
     }
 }
 
@@ -309,8 +309,6 @@ function selHTML() {
     w.surroundContents(nNd);
     return nNd.innerHTML;
 }
-
-
 
 function italicsText() {
   var selectedText = "";
@@ -618,6 +616,7 @@ function removehighlightAll(searchText){
 /*Function to perform replace of all the text*/
 function replaceHelper(){
   var searchText=$("#findText").val();
+  removehighlightAll(searchText);
   var replaceText=$("#replaceText").val();
   if(searchText==="" || searchText===undefined || searchText===null){
     alert("Please enter some text in the find area");
@@ -700,7 +699,7 @@ function smallHeading(){
   try{
 	 currHtml = document.getElementById("textarea").innerHTML;
 	 heading = strVariable.fontsize(16);
-     copysuccess = heading.toLowerCase(); // executable command to make the selected text as uppercase. 
+     copysuccess = heading.toLowerCase(); // executable command to make the selected text as uppercase.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
 }
@@ -787,9 +786,9 @@ $(document).ready(function() {
 		fontStyle(selOption);
         console.log(selOption);
     });
-	
+
 	$("#color-dropdown a").click(function(e){
-        e.preventDefault(); 
+        e.preventDefault();
         var selOption = $(this).text();
 		fontColor(selOption);
         console.log(selOption);
@@ -827,7 +826,7 @@ function printpreview()
 function fontSize(option) {
     document.getElementById("textarea").style.fontSize = option;
 }
-	
+
 function fontStyle(option) {
     document.getElementById("textarea").style.fontFamily = option;
 }
@@ -835,4 +834,3 @@ function fontStyle(option) {
 function fontColor(option) {
     document.getElementById("textarea").style.color = option;
 }
-
