@@ -310,7 +310,6 @@ function selHTML() {
     return nNd.innerHTML;
 }
 
-
 function underline() {
 	var selectedText = "";
   if (window.getSelection){
