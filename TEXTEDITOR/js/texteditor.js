@@ -1,15 +1,25 @@
 $(document).ready(function(){
+
     $('#textarea').keyup(function(){
         stateChange();
     });
+
+    $("#clearBtn").click(function(){
+    $(this).hide();
+    $("#searchTxtBox").val('');
+    remove_highlight();
+    })
 /* Document preview functionality */
     var modal = document.getElementById('myModal');
+    var c_modal = document.getElementById('myModalvalid');
+    var flag =0;
 
 // Get the button that opens the modal
 var btn = document.getElementById("previewBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var c_span = document.getElementsByClassName("c_close")[0];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
@@ -26,6 +36,9 @@ btn.onclick = function() {
 span.onclick = function() {
     modal.style.display = "none";
 }
+c_span.onclick = function() {
+    c_modal.style.display = "none";
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -35,15 +48,8 @@ window.onclick = function(event) {
 }
 })
 
-$(document).ready(function(){
-
-    $( "#textarea" ).keyup(function() {
-        stateChange();
-      });
-
-})
-
 var isSearchTrigger = false
+var currentTheme = 'Light'
 function newFile()
 {
    var txt;
@@ -80,7 +86,7 @@ function saveFile()
     if (text.length > 0)
     {
         downloadFile(text, "NewTextDocument.txt", "text/plain;charset=utf-8");
-        $('#saveTaskModal').modal()
+        $('#saveTaskModal').modal({backdrop: false, dismiss:true })
     }
 }
 
@@ -197,9 +203,9 @@ function Wordcount()
 {
     var wordcountvalue = 0;
     s = document.getElementById("textarea").innerText;
-	s = s.replace(/(^\s*)|(\s*$)/gi,"");
-	s = s.replace(/[ ]{2,}/gi," ");
-    s = s.replace(/\n /,"\n");
+	s = s.replace(/(^\s*)|(\s*$)/gi,""); // remove spaces from start + end
+	s = s.replace(/[ ]{2,}/gi," "); // 2 or more spaces to 1
+    s = s.replace(/\n/g,' '); // newlines to space
     wordcountvalue = s.split(' ').length;
 	document.getElementById("wordcount").innerHTML = wordcountvalue;
 }
@@ -277,66 +283,31 @@ function rightAlign(){
     copysuccess = false;
     }
 }
-/* Code for Uppercase */
+/* Uppercase Functionality for the text selected*/
 function upperCase(){
-  var selectedText = "";
-  if (window.getSelection){
-      selectedText = window.getSelection().toString();
-  }
-  strVariable=selectedText;
-  // var to check whether execCommand successfully executed
-  var copysuccess = [];
-  var res;
-  try{
-	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.toUpperCase(); // executable command to make the selected text as uppercase.
-	res = currHtml.replace(selectedText, copysuccess)
-	document.getElementById("textarea").innerHTML = res;
+    try {
+var selectedText = selHTML().toUpperCase();
+console.log(selectedText);
+document.getElementById("textarea").innerHTML = document.getElementById("textarea").innerHTML.replace(selHTML(),selectedText);
 }
-  catch(e){
-      copysuccess = false;
-  }
+catch(e){
+    copysuccess = false;
+}
 }
 
-function boldText() {
-  var selectedText = "";
-  if (window.getSelection){
-      selectedText = window.getSelection().toString();
-  }
-  strVariable=selectedText;
-  // var to check whether execCommand successfully executed
-  var copysuccess = [];
-  var res;
-  try{
-	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.bold(); // executable command to make the selected text as bold.
-	res = currHtml.replace(selectedText, copysuccess)
-	document.getElementById("textarea").innerHTML = res;
-}
-  catch(e){
-      copysuccess = false;
-  }
+/*Text selection*/
+function selHTML() {
 
-}
+    if (window.ActiveXObject) {
+        var c = document.selection.createRange();
+        return c.htmlText;
+    }
 
-function italicsText() {
-  var selectedText = "";
-  if (window.getSelection){
-      selectedText = window.getSelection().toString();
-  }
-  strVariable=selectedText;
-  // var to check whether execCommand successfully executed
-  var copysuccess = [];
-  var res;
-  try{
-	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.italics(); // executable command to make the selected text as italics.
-	res = currHtml.replace(selectedText, copysuccess)
-	document.getElementById("textarea").innerHTML = res;
-}
-  catch(e){
-      copysuccess = false;
-  }
+    var nNd = document.createElement("p");
+    var w = getSelection().getRangeAt(0);
+
+    w.surroundContents(nNd);
+    return nNd.innerHTML;
 }
 
 function underline() {
@@ -353,6 +324,7 @@ function underline() {
      copysuccess = strVariable.underline(); // executable command to make the selected text as underline.
 	res = currHtml.replace(selectedText, copysuccess)
 	document.getElementById("textarea").innerHTML = res;
+
 }
   catch(e){
       copysuccess = false;
@@ -360,7 +332,7 @@ function underline() {
 
 }
 
-function fontSize(selectTag){
+/* function fontSize(selectTag){
 	debugger
 	var selectedText = "";
   if (window.getSelection){
@@ -380,7 +352,7 @@ function fontSize(selectTag){
   catch(e){
       copysuccess = false;
   }
-}
+} */
 
 function centerAlign(){
   // var to check whether execCommand successfully executed
@@ -415,19 +387,10 @@ function Outdent(){
 /* Code for Lowercase */
 
 function lowerCase(){
-  var selectedText = "";
-  if (window.getSelection){
-      selectedText = window.getSelection().toString();
-  }
-  strVariable=selectedText;
-  // var to check whether execCommand successfully executed
-  var copysuccess = [];
-  var res;
   try{
-	 currHtml = document.getElementById("textarea").innerHTML;
-     copysuccess = strVariable.toLowerCase(); // executable command to make the selected text as lowercase.
-	res = currHtml.replace(selectedText, copysuccess)
-	document.getElementById("textarea").innerHTML = res;
+    var selectedText = selHTML().toLowerCase();
+    console.log(selectedText);
+    document.getElementById("textarea").innerHTML = document.getElementById("textarea").innerHTML.replace(selHTML(),selectedText);
 }
   catch(e){
       copysuccess = false;
@@ -529,7 +492,7 @@ function highlightHelper(){
   if(searchText==="" || searchText===undefined || searchText===null){
     alert("Please enter some text in the find area");
   }else{
-    if($("#textarea").html()==="" || $("#textarea").html()===undefined || $("#textarea").html()===null){
+    if($("#textarea").html().trim()==="" || $("#textarea").html()===undefined || $("#textarea").html().trim()===null){
       alert("Please enter some text in the text area");
     }else{
       highlightAll(searchText);
@@ -538,13 +501,89 @@ function highlightHelper(){
 }
 
 function highlightAll(searchText){
-  var regExp=new RegExp(searchText,"g");
-  $("#textarea").html(function() {
-      return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
-  });
-  document.getElementById("textarea").addEventListener("click", function() {
-    removehighlightAll(searchText);
-  }, {once : true});
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(searchText))
+    {
+        var regExp=new RegExp(searchText,"g");
+        $("#textarea").html(function() {
+            return $(this).html().replace(regExp, '<span class="highlight">' + searchText + '</span>');
+        });
+        document.getElementById("textarea").addEventListener("click", function() {
+          removehighlightAll(searchText);
+        }, {once : true});
+    }
+    else{
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
+
+}
+
+var hyperLinkText,trimmedText,selectedHyperlinkText;
+
+/*Function to call hyperlink modal*/
+function callHyperLinkModal(){
+
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  selectedHyperlinkText=selectedText;
+  if( selectedText.trim()==="" || selectedText.trim() ===null){
+    alert("Please select some text to be hyperlinked");
+  }
+  else {
+    document.getElementById('modalHyperlinkId').value="";
+    $("#hyperlinkModal").modal({backdrop: false, dismiss:true });
+    trimmedText=selectedText.trim();
+  }
+
+}
+
+/*Function to make a text as hyperlink*/
+function makeHyperLink(userLinkText){
+    var result;
+    currentHTML = document.getElementById("textarea").innerHTML;
+    hyperLinkText= "<span contentEditable='false'><a href='http://www." + userLinkText + "' target='_blank'>"+ trimmedText +"</a></span>";
+    result=currentHTML.replace(selectedHyperlinkText,hyperLinkText);
+    document.getElementById("textarea").innerHTML=result;
+}
+
+var saveVar;
+
+/*Function to call the actual interval on body load for every interval set by user in seconds*/
+function callAutoSave(timeInterval){
+  timeIntervalInt=parseInt(timeInterval);
+  saveVar=setInterval(autoSave,timeIntervalInt*1000);
+}
+
+/*Function to autosave the text document in local storage*/
+function autoSave(){
+  var textElement=document.getElementById("textarea");
+  localStorage.setItem("docTest",textElement.innerHTML);
+}
+
+/*Function to load the text on to the textarea from the localStorage*/
+function loadSavedData(){
+  var textElement=document.getElementById("textarea");
+  if(localStorage.getItem("docTest")!=null){
+    textElement.innerHTML=localStorage.getItem("docTest");
+  }else {
+    textElement.innerHTML="";
+  }
+}
+
+/*Function to be invoked on bodyLoad*/
+function bodyLoadFunctions(){
+  buttondisable();
+  loadSavedData();
+  callAutoSave(5);
 }
 
 function removehighlightAll(searchText){
@@ -557,8 +596,21 @@ function removehighlightAll(searchText){
 /*Function to perform replace of all the text*/
 function replaceHelper(){
   var searchText=$("#findText").val();
+  removehighlightAll(searchText);
   var replaceText=$("#replaceText").val();
-  replaceAll(searchText,replaceText);
+  if(searchText==="" || searchText===undefined || searchText===null){
+    alert("Please enter some text in the find area");
+  }else{
+    if(replaceText==="" || replaceText===undefined || replaceText===null){
+      alert("Please enter some text in the replace area");
+    }else{
+      if($("#textarea").html().trim()==="" || $("#textarea").html()===undefined || $("#textarea").html().trim()===null){
+        alert("Please enter some text in the text area");
+      }else{
+        replaceAll(searchText,replaceText);
+      }
+    }
+  }
 }
 
 function replaceAll(searchText,replaceText){
@@ -584,15 +636,75 @@ function replaceAll(searchText,replaceText){
 function searchButtonClicked() {
     var searchQuery = $("#searchTxtBox").val();
     remove_highlight();
+    $("#clearBtn").show();
     isSearchTrigger = false;
     if (searchQuery.length > 0) {
         isSearchTrigger = true;
-        highlight(searchQuery);
+        highlight(searchQuery.trim());
     }
 }
 
+function capitalHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var heading = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+     heading = strVariable.fontsize(16);
+     copysuccess = heading.toUpperCase();    // executable command to make the selected text as uppercase.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
+function smallHeading(){
+  var selectedText = "";
+  if (window.getSelection){
+      selectedText = window.getSelection().toString();
+  }
+  strVariable=selectedText;
+  // var to check whether execCommand successfully executed
+  var copysuccess = [];
+  var heading = [];
+  var res;
+  try{
+	 currHtml = document.getElementById("textarea").innerHTML;
+	 heading = strVariable.fontsize(16);
+     copysuccess = heading.toLowerCase(); // executable command to make the selected text as uppercase.
+	res = currHtml.replace(selectedText, copysuccess)
+	document.getElementById("textarea").innerHTML = res;
+}
+  catch(e){
+      copysuccess = false;
+  }
+}
+
 function highlight(text) {
+    var checkExist = $("#textarea").text();
+    var modal = document.getElementById('myModalvalid');
+    if(checkExist.includes(text))
+    {
     $("#textarea").html($("#textarea").html().replace(new RegExp(text, 'g'), "<span class='highlight'>" + text + "</span>" ));
+    }
+    else{
+        // Alert when no result found
+        values = "No results found!!"
+        chk = document.getElementById("textarea").innerText;
+        if(chk != "" && chk != null)
+        {
+            document.getElementById("cutomiz").innerHTML = values;
+            modal.style.display = "block";
+        }
+    }
 }
 
 function remove_highlight() {
@@ -611,4 +723,94 @@ $(document).ready(function() {
         }
     });
 
+    $('#themeSelector button').click(function() {
+        $(this).addClass('active').siblings().removeClass('active');
+        switch(this.value) {
+            case 'Dark':
+                if ($('#darktheme').length == 0) {
+                    $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                }
+                break;
+            case 'Light':
+                $('#darktheme').remove();
+                break;
+            }
+        if (this.value == currentTheme) {
+            return;
+        }
+        else {
+            currentTheme = this.value;
+            switch(currentTheme) {
+                case 'Dark':
+                    $('#lighttheme').remove();
+                    $('head').append('<link id="darktheme" rel="stylesheet" href="styles/darktheme.css" type="text/css" />');
+                    break;
+                case 'Light':
+                    $('#darktheme').remove();
+                    $('head').append('<link rel="stylesheet" id="lighttheme" type = "text/css" href ="styles/lighttheme.css"/>');
+                    break;
+                }
+        }
+    });
+
+    $("#size-dropdown a").click(function(e){
+        e.preventDefault();
+        var selOption = $(this).text();
+		fontSize(selOption);
+        console.log(selOption);
+    });
+
+    $("#style-dropdown a").click(function(e){
+        e.preventDefault();
+        var selOption = $(this).text();
+		fontStyle(selOption);
+        console.log(selOption);
+    });
+
+	$("#color-dropdown a").click(function(e){
+        e.preventDefault();
+        var selOption = $(this).text();
+		fontColor(selOption);
+        console.log(selOption);
+    });
+
+    $("#autosave-dropdown a").click(function(e){
+        e.preventDefault();
+        var selOption = $(this).text();
+        var getNo=selOption.split(' ')[0];
+
+        //for 5 seconds
+        if(parseInt(getNo)===5){
+          clearInterval(saveVar);
+          callAutoSave(5);
+        }
+        //for 60 seconds
+        else if (parseInt(getNo) === 60) {
+          clearInterval(saveVar);
+          callAutoSave(60);
+        }
+        //for 10 minutes
+        else {
+          clearInterval(saveVar);
+          callAutoSave(600);
+        }
+    });
+
 });
+// Print preivew options
+function printpreview()
+{
+    window.print();
+}
+
+function fontSize(option) {
+    document.getElementById("textarea").style.fontSize = option;
+}
+
+function fontStyle(option) {
+    document.getElementById("textarea").style.fontFamily = option;
+}
+
+function fontColor(option) {
+    document.getElementById("textarea").style.color = option;
+}

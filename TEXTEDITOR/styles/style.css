@@ -12,7 +12,6 @@
 }
 
 .controlPanel {
-    background: #535353;
     padding-bottom: 3px;
     padding-right: 3px;
 }
@@ -22,12 +21,13 @@
 }
 
 .textAreaPanel {
-    background: #535353;
     padding-bottom: 6px;
     padding-top:1%;
     padding-right: 3px;
     padding-left: 3px;
 }
+
+
 
 .fullScreen {
     position: absolute;
@@ -47,7 +47,9 @@
 {
     display: inline-block;
 }
-
+.Upper{
+    text-transform: uppercase;
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -70,7 +72,18 @@
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
-    height:80%
+    height:80%;
+    overflow: auto
+}
+
+.c_modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%;
+    height:25%;
+    overflow: auto
 }
 
 /* The Close Button */
@@ -79,6 +92,8 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    position: fixed;
+    margin-left: 56%;
 }
 
 .close:hover,
@@ -88,8 +103,42 @@
     cursor: pointer;
 }
 
+.c_close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: fixed;
+    margin-left: 21%;
+    margin-top:-10px;
+}
+#cutomiz
+{
+    text-align: center;
+    margin-top:30px;
+}
+
+.c_close:hover,
+.c_close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #textarea{
-  height: 100vh !important;
+  height: 100% !important;
+}
+
+/*CSS class to make a div sticky*/
+.makeSticky{
+  position: sticky;
+  top: 0;
+}
+
+/*CSS class to make the text area scrollable*/
+.adjustScroll{
+  overflow-y:scroll;
+  min-height:100vh
 }
 
 /* CSS class for highlighting a text */
@@ -114,4 +163,38 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
 }
 .highlight {
     background-color: orange;
-  }
+}
+
+.controlPanel {
+    background-color: gainsboro;
+}
+
+.active {
+    background-color:  #167ffb !important;
+    color: white !important;
+}
+p.b {
+    font-style: italic;
+}
+
+
+/* Print preview option and hiding the menu area*/
+
+@media print {
+    .makeSticky {
+        display :  none;
+    }
+    .countfn
+    {
+        display :  none;
+    }
+    #printBtn
+    {
+        display: none;
+    }
+    #selectedFile
+    {
+    display : none;
+    }
+}
+
